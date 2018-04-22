@@ -23,7 +23,8 @@
 #include "Drinks.h"
 #include "Bakery.h"
 #include "Cosmetics.h"
-
+#include "Hygiene.h"
+#include "Pharmacy.h"
 class Store{
 	private:
 		std::vector<Produce> produceItems;
@@ -32,7 +33,8 @@ class Store{
 		std::vector<Drinks> drinkItems;
 		std::vector<Bakery> bakeryItems;
 		std::vector<Cosmetics> cosmeticsItems;
-
+		std::vector<Hygiene> hygieneItems;
+		std::vector<Pharmacy> pharmacyItems;
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
 
@@ -96,6 +98,25 @@ class Store{
 		        Cosmetics getCosmeticsItem(int pos);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Hygiene Function Declarations
+		        void addHygiene(std::string name, double pricePerUnit, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		        void hygieneGrid();
+		        int amountOfHygieneItems();
+		        int checkHygieneButtonPressed(sf ::Vector2f mousePosF);
+		        Hygiene getHygieneItem(int pos);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	    ///////////////////////////////////////////////////////////////////////////////////
+		//Pharmacy Function Declarations
+		        void addPharmacy(std::string name, double pricePerCapsules, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		        void pharmacyGrid();
+		        int amountOfPharmacyItems();
+		        int checkPharmacyButtonPressed(sf::Vector2f mousePosF);
+		        Pharmacy getPharmacyItem(int pos);
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Cashier Function Declaration
@@ -121,8 +142,8 @@ void Store::addProduce(std::string name, std::string type, double pricePerLlb, s
 
 void Store::produceGrid()
 {
-	float x = 350.0f;
-	float y = 150.0f;
+	float x = 110.0f;
+	float y = 160.0f;
 	int cnt = 0;
 	for(int i = 0, max = produceItems.size(); i!=max; ++i )
 	{
@@ -131,10 +152,10 @@ void Store::produceGrid()
 		x+=200.0f;
 		cnt++;
 
-		if(cnt == 4)
+		if(cnt == 5)
 		{
 			cnt = 0;
-			x = 350.0f;
+			x = 110.0f;
 			y += 100.0f;
 		}
 	}
@@ -407,6 +428,104 @@ Cosmetics Store::getCosmeticsItem(int pos)
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//Hygiene Function Declarations
+void Store::addHygiene(std::string name, double pricePerUnit, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+	hygieneItems.push_back(Hygiene( name,  pricePerUnit,  dimensions, font, initText));
+}
+
+void Store::hygieneGrid()
+{
+	float x = 350.0f;
+	float y = 150.0f;
+	int cnt = 0;
+	for(int i = 0, max = hygieneItems.size(); i!=max; ++i )
+	{
+		hygieneItems.at(i).changeButtonPosition(x, y);
+		hygieneItems.at(i).changeTextPosition(x+5, y+5);
+		x+=200.0f;
+		cnt++;
+
+		if(cnt == 4)
+		{
+			cnt = 0;
+			x = 350.0f;
+			y += 100.0f;
+		}
+	}
+}
+
+int Store::checkHygieneButtonPressed(sf::Vector2f mousePosF)
+{
+	for(int i = 0, max = hygieneItems.size(); i!=max;++i)
+	{
+		if(hygieneItems.at(i).clicked(mousePosF))
+			return i;
+	}
+	return 444;
+}
+
+int Store::amountOfHygieneItems()
+{
+	return hygieneItems.size();
+}
+
+Hygiene Store::getHygieneItem(int pos)
+{
+	return hygieneItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////
+//Pharmacy Function Implementation
+void Store::addPharmacy(std::string name, double pricePerCapsules, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
+{
+    pharmacyItems.push_back(Pharmacy( name, pricePerCapsules,  dimensions, font, initText));
+}
+
+void Store::pharmacyGrid()
+{
+    float x = 350.0f;
+    float y = 150.0f;
+    int cnt = 0;
+    for(int i = 0, max = pharmacyItems.size(); i!=max; ++i )
+    {
+        pharmacyItems.at(i).changeButtonPosition(x, y);
+        pharmacyItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 4)
+        {
+            cnt = 0;
+            x = 350.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkPharmacyButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = deliItems.size(); i!=max;++i)
+    {
+        if(pharmacyItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfPharmacyItems()
+{
+    return pharmacyItems.size();
+}
+
+Pharmacy Store::getPharmacyItem(int pos)
+{
+    return pharmacyItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Cashier Functions

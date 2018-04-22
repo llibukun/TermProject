@@ -1,15 +1,15 @@
-Produce Lettuce vegetable 0.25
-Produce Kiwi fruit 1.20
-Produce Banana fruit 0.10
-Produce Apple fruit 0.80
-Produce Mango fruit 1
-Produce Carrot vegetable 0.50
-Produce Celery vegetable 0.6
-Produce Walnuts nut 3.56
-Meat Churrasco beef 3.00
-Meat Chicken poultry 2.80
-Meat Ham pork 1.00
-Meat Sirloin beef 2.80
+Produce Lettuce Vegetable 0.25
+Produce Kiwi Fruit 1.20
+Produce Banana Fruit 0.10
+Produce Apple Fruit 0.80
+Produce Mango Fruit 1
+Produce Carrot Vegetable 0.50
+Produce Celery Vegetable 0.6
+Produce Walnuts Nut 3.56
+Meat Churrasco Beef 3.00
+Meat Chicken Poultry 2.80
+Meat Ham Pork 1.00
+Meat Sirloin Beef 2.80
 Deli Ham 1.95 40.00
 Deli Mortadella 1.50 25.00
 Deli Salami 1.30 23.00
@@ -47,32 +47,32 @@ Bakery Croissant 9.99
 Bakery Pita_Bread 9.99
 Bakery Bagels 4.99
 Bakery White_Bread 2.99
-Pharmacy Tylenol_50_Capsules 9.99 100
-Pharmacy Advil_50_Capsules 11.99 100
-Pharmacy Ibuprofen_100_Capsules 12.50 100
-Pharmacy Emergen-C_10_Packs 8.55 100
-Pharmacy Benadryl_50_Capsules 12.55 100
-Pharmacy Chlor-trimeton_50_Capsules 12.99 100
-Pharmacy Allegra_50_Capsules 13.99 100
-Pharmacy Zyrtec_75_Capsules 16.99 100
-Pharmacy Claritin_50_Capsules 14.99 100
-Pharmacy DayQuil_75_Capsules 13.99 100
-Pharmacy NyQuil_50_Capsules 14.99 100
-Snacks Tostitos_Partybag_Chips 8.55 100
-Snacks Doritos_Partybag 12.99 100
-Snacks Lays_Partybag 10.99 100
-Snacks Mr.Djald's_Pretzels 8.99 100
-Snacks Mr.Djald's_Cookies 7.99 100
-Snacks Mr.Djald's_Candy 5.48 100
-Snacks Mr.Djald's_Crackers 6.99 100
-Snacks Mr.Djald's_Mixed_Nuts 7.99 100
-Snacks Mr.Djald's_Chocolate 5.15 100
-Snacks Hershey_Chocolate 8.99 100
+Pharmacy Tylenol_50_Capsules 9.99
+Pharmacy Advil_50_Capsules 11.99
+Pharmacy Ibuprofen_100_Caps 12.50
+Pharmacy Emergen-C_10_Packs 8.55
+Pharmacy Benadryl_50_Capsules 12.55
+Pharmacy Chlor-trim_50_Caps 12.99
+Pharmacy Allegra_50_Capsules 13.99
+Pharmacy Zyrtec_75_Capsules 16.99
+Pharmacy Claritin_50_Capsules 14.99
+Pharmacy DayQuil_75_Capsules 13.99
+Pharmacy NyQuil_50_Capsules 14.99
+Snacks Tostitos_Partybag_Chips 8.55
+Snacks Doritos_Partybag 12.99
+Snacks Lays_Partybag 10.99
+Snacks Mr.Djald's_Pretzels 8.99
+Snacks Mr.Djald's_Cookies 7.99
+Snacks Mr.Djald's_Candy 5.48
+Snacks Mr.Djald's_Crackers 6.99
+Snacks Mr.Djald's_Mixed_Nuts 7.99
+Snacks Mr.Djald's_Chocolate 5.15
+Snacks Hershey_Chocolate 8.99
 Cosmetics Powder True_Match 8.99
 Cosmetics Blush True_Match 8.99
 Cosmetics Eyeliner Wet_n_Wild 7.59
 Cosmetics Mascara Maybelline 7.59
-Cosmetics Lipsticks Covergirl 4.99
+Cosmetics Lipstick Covergirl 4.99
 Cosmetics Eyeshadow Covergirl 7.99
 Cosmetics Bronzer Loreal 7.99
 Cosmetics Brushes Elf 12.99
@@ -80,25 +80,25 @@ Cosmetics Nail_Polish Sally 5.49
 Cosmetics Acetone Great_Value 2.99
 Cosmetics Cotton_Balls Great_Value 1.99
 Cosmetics Cotton_Swabs Q-tips 2.99
-Drinks Coke soft_drinks 0.75
-Drinks Sprite soft_drinks 0.75
-Drinks Pepsi soft_drinks 0.75
-Drinks Mountain_Dew soft_drinks 0.95
-Drinks Fanta soft_drinks 0.75
-Drinks Sunkist soft_drinks 0.75
-Drinks Sunny_D juice 1.18
-Drinks Tropicana juice 1.25
-Drinks Tampico juice 1.25
-Drinks Nestle water 1.05
-Drinks Dasani water 1.50
-Drinks Aquafina water 0.95
-Drinks Zephyrhills water 1.75
-Drinks Arizona tea 2.50
-Drinks Brisk tea 2.05
-Drinks Red_Bull sports_and_energy 2.50
-Drinks Gatorade sports_and_energy 2.50
-Drinks Monster sports_and_energy 2.75
-Drinks Rockstar sports_and_energy 2.75
+Drinks Coke Soft_Drinks 0.75
+Drinks Sprite Soft_Drinks 0.75
+Drinks Pepsi Soft_Drinks 0.75
+Drinks Mountain_Dew Soft_Drinks 0.95
+Drinks Fanta Soft_Drinks 0.75
+Drinks Sunkist Soft_Drinks 0.75
+Drinks Sunny_D Juice 1.18
+Drinks Tropicana Juice 1.25
+Drinks Tampico Juice 1.25
+Drinks Nestle Water 1.05
+Drinks Dasani Water 1.50
+Drinks Aquafina Water 0.95
+Drinks Zephyrhills Water 1.75
+Drinks Arizona Tea 2.50
+Drinks Brisk Tea 2.05
+Drinks Red_Bull Sports_And_Energy 2.50
+Drinks Gatorade Sports_And_Energy 2.50
+Drinks Monster Sports_And_Energy 2.75
+Drinks Rockstar Sports_And_Energy 2.75
 HotFoods Tomato_Soup 1.99
 HotFoods Broccoli_Cheddar_Soup 1.99
 HotFoods Chili_Soup 1.99
@@ -135,27 +135,27 @@ FrozenFoods Vanilla_Ice_Cream 3.99
 FrozenFoods Chocolate_Ice_Cream 3.99
 FrozenFoods Strawberry_Ice_Cream 3.99
 FrozenFoods Cookies_And_Cream_Ice_Cream 3.99
-Dairy Greek_Yogurt Yoplait 6 0.99
-Dairy Whole_Milk Publix 128 2.98
-Dairy Sour_Cream Great_Value 16 1.18
-Dairy White_Eggs Great_Value 18 2.72
-Dairy Butter Beurre_President 7 5.74
-Dairy Vanilla_Soymilk Silk 65 4.02
-Dairy Almond_Milk Blue_Diamond 64 7.14
-Dairy Creamer Coffee-mate 32 3.98
-Dairy Milk_Powder Nido 56.3 15.99
-Dairy Skim_Milk Nestle 120 3.45
-Grains Brown_Rice Royal_Basmati 10 false true 32.99
-Grains White_Rice White 15 true true 41.34
-Grains Cereal Honey_Bunches 2.87 false true 6.48
-Grains Cereal Cheerios 1.35 false false 4.76
-Grains Spaghetti Barilla 1 false true 11.17
-Grains Spaghetti Ronzoni 2 false false 9.95
-Grains Penne Barilla 1.5 true false 10.98
-Grains Baked_Beans Bush's 1.75 false false 2.28
-Grains Kidney_Beans Progresso 2.5 false true 3.48
-Grains Cereal Lucky_Charms 1.25 false true 3.64
-Grains Raisin_Bran Kellogg's 1 false true 4.58
+Dairy Greek_Yogurt Yoplait 0.99
+Dairy Whole_Milk Mr.Djald's 2.98
+Dairy Sour_Cream Mr.Djald's 1.18
+Dairy White_Eggs Mr.Djald's 2.72
+Dairy Butter Beurre_President 5.74
+Dairy Vanilla_Soymilk Silk 4.02
+Dairy Almond_Milk Blue_Diamond 7.14
+Dairy Creamer Coffee-mate 3.98
+Dairy Milk_Powder Nido 15.99
+Dairy Skim_Milk Nestle 3.45
+Grains Brown_Rice Royal_Basmati 32.99
+Grains White_Rice White 41.34
+Grains Cereal Honey_Bunches 6.48
+Grains Cereal Cheerios 4.76
+Grains Spaghetti Barilla 11.17
+Grains Spaghetti Ronzoni 9.95
+Grains Penne Barilla 10.98
+Grains Baked_Beans Bush's 2.28
+Grains Kidney_Beans Progresso 3.48
+Grains Cereal Lucky_Charms 3.64
+Grains Raisin_Bran Kellogg's 4.58
 Hygiene Soap 2.99
 Hygiene Toothpaste 1.99
 Hygiene Lotion 6.99

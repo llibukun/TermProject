@@ -30,6 +30,8 @@ int selectedDeli;
 int selectedDrink;
 int selectedBakery;
 int selectedCosmetic;
+int selectedHygiene;
+int selectedPharmacy;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -93,6 +95,10 @@ int main()
 			supermarket.addBakery(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if(lineVec.at(0).compare("Cosmetics") == 0){
 			supermarket.addCosmetics(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
+		}else if (lineVec.at(0).compare("Hygiene")==0){
+			supermarket.addHygiene(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
+		}else if (lineVec.at(0).compare("Pharmacy")==0){
+			supermarket.addPharmacy(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}
 		lineVec.clear();
 	}
@@ -270,10 +276,12 @@ int main()
 	Button deliButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 340.0f), font, "Deli", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button bakeryButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 407.0f), font, "Bakery", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button cosmeticsButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 474.0f), font, "Cosmetics", 5, 25, sf::Color::Black, sf::Color::Black);
+	Button hygieneButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 541.0f), font, "Hygiene", 5, 25, sf::Color::Black, sf::Color::Black);
+	Button pharmacyButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 608.0f), font, "Pharmacy", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button cartButton = Button(sf::Vector2f(125.0f, 45.0f), sf::Vector2f(1080.0f, 20.0f) , font, "Checkout", 9, 22, sf::Color::Black, sf::Color::Red);
 
 	Button addToCart = Button(sf::Vector2f(150.0f, 50.0f), sf::Vector2f(600.0f, 100.0f) , font, "Add to Cart", 3, 25, sf::Color::Black, sf::Color::Black);
-	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1095.0f, 20.0f) , font, "Go Back", 9, 22, sf::Color::Black, sf::Color::Red);
+	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1095.0f, 20.0f) , font, "MENU", 9, 22, sf::Color::Black, sf::Color::Red);
 
 	TextBox customerName;
     while (window.isOpen())
@@ -320,7 +328,7 @@ int main()
     							if(event.text.unicode == 13)	//Must have a particular action be a break statement (<enter> key)
     							{
     								std::cout<<nameBox.getBoxTextStr()<<std::endl;
-    								customerName = TextBox(sf::Vector2f(900.0f, 720.0f), erasFont, appendStr("Welcome ", nameBox.getBoxTextStr()), 30, sf::Color::Blue);
+    								customerName = TextBox(sf::Vector2f(800.0f, 720.0f), erasFont, appendStr("Welcome ", nameBox.getBoxTextStr()), 30, sf::Color::Blue);
     								windowDepth++;
     								std::cout<<windowDepth<<std::endl;
     								break;
@@ -329,7 +337,6 @@ int main()
     					}
     				}
     			}
-
     		}
     			window.clear(sf::Color::White);
                 window.draw(entrance);
@@ -402,21 +409,8 @@ int main()
      					    //Draw all the buttons
         			        window.clear(sf::Color::White);
                             window.draw(background);
-        			        window.draw(produceButton.getButton());
-        			        window.draw(produceButton.getButtonName());
-        			        window.draw(meatsButton.getButton());
-        			        window.draw(meatsButton.getButtonName());
-        			        window.draw(grainsButton.getButton());
-        			        window.draw(grainsButton.getButtonName());
-        			        window.draw(dairyButton.getButton());
-        			        window.draw(dairyButton.getButtonName());
-        			        window.draw(drinksButton.getButton());
-        			        window.draw(deliButton.getButton());
-        			        window.draw(deliButton.getButtonName());
-        			        window.draw(cartButton.getButton());
-        			        window.draw(cartButton.getButtonName());
-        			        window.draw(drinksButton.getButtonName());
-        			        window.draw(customerName.getBoxText());
+        					window.draw(customerName.getBoxText());
+
         			        for(int i = 0, max = supermarket.amountOfProduceItems(); i!=max;++i)
         			        {
         			        	window.draw(supermarket.getProduceItem(i).getButton());
@@ -460,20 +454,7 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(background);
-        					window.draw(produceButton.getButton());
-        					window.draw(produceButton.getButtonName());
-        					window.draw(meatsButton.getButton());
-        					window.draw(meatsButton.getButtonName());
-        					window.draw(grainsButton.getButton());
-        					window.draw(grainsButton.getButtonName());
-        					window.draw(dairyButton.getButton());
-        					window.draw(dairyButton.getButtonName());
-        					window.draw(drinksButton.getButton());
-        					window.draw(deliButton.getButton());
-        					window.draw(deliButton.getButtonName());
-        					window.draw(cartButton.getButton());
-        					window.draw(cartButton.getButtonName());
-        					window.draw(drinksButton.getButtonName());
+
         					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfMeatItems(); i!=max;++i)
         					{
@@ -516,20 +497,7 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(background);
-        					window.draw(produceButton.getButton());
-        					window.draw(produceButton.getButtonName());
-        					window.draw(meatsButton.getButton());
-        					window.draw(meatsButton.getButtonName());
-        					window.draw(grainsButton.getButton());
-        					window.draw(grainsButton.getButtonName());
-        					window.draw(dairyButton.getButton());
-        					window.draw(dairyButton.getButtonName());
-        					window.draw(drinksButton.getButton());
-        					window.draw(deliButton.getButton());
-        					window.draw(deliButton.getButtonName());
-        					window.draw(cartButton.getButton());
-        					window.draw(cartButton.getButtonName());
-        					window.draw(drinksButton.getButtonName());
+
         					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfDeliItems(); i!=max;++i)
         					{
@@ -572,20 +540,7 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(background);
-        					window.draw(produceButton.getButton());
-        					window.draw(produceButton.getButtonName());
-        					window.draw(meatsButton.getButton());
-        					window.draw(meatsButton.getButtonName());
-        					window.draw(grainsButton.getButton());
-        					window.draw(grainsButton.getButtonName());
-        					window.draw(dairyButton.getButton());
-        					window.draw(dairyButton.getButtonName());
-        					window.draw(drinksButton.getButton());
-        					window.draw(deliButton.getButton());
-        					window.draw(deliButton.getButtonName());
-        					window.draw(cartButton.getButton());
-        					window.draw(cartButton.getButtonName());
-        					window.draw(drinksButton.getButtonName());
+
         					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfDrinksItems(); i!=max;++i)
         					{
@@ -628,22 +583,7 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(background);
-        					window.draw(produceButton.getButton());
-        					window.draw(produceButton.getButtonName());
-        					window.draw(meatsButton.getButton());
-        					window.draw(meatsButton.getButtonName());
-        					window.draw(grainsButton.getButton());
-        					window.draw(grainsButton.getButtonName());
-        					window.draw(dairyButton.getButton());
-        					window.draw(dairyButton.getButtonName());
-        					window.draw(drinksButton.getButton());
-        					window.draw(deliButton.getButton());
-        					window.draw(deliButton.getButtonName());
-        					window.draw(cartButton.getButton());
-        					window.draw(cartButton.getButtonName());
-        					window.draw(drinksButton.getButtonName());
-        					window.draw(bakeryButton.getButton());
-        					window.draw(bakeryButton.getButtonName());
+
         					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfBakeryItems(); i!=max;++i)
         					{
@@ -686,24 +626,7 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(background);
-        					window.draw(produceButton.getButton());
-        					window.draw(produceButton.getButtonName());
-        					window.draw(meatsButton.getButton());
-        					window.draw(meatsButton.getButtonName());
-        					window.draw(grainsButton.getButton());
-        					window.draw(grainsButton.getButtonName());
-        					window.draw(dairyButton.getButton());
-        					window.draw(dairyButton.getButtonName());
-        					window.draw(drinksButton.getButton());
-        					window.draw(deliButton.getButton());
-        					window.draw(deliButton.getButtonName());
-        					window.draw(cartButton.getButton());
-        					window.draw(cartButton.getButtonName());
-        					window.draw(drinksButton.getButtonName());
-        					window.draw(bakeryButton.getButton());
-        					window.draw(bakeryButton.getButtonName());
-        					window.draw(cosmeticsButton.getButton());
-        					window.draw(cosmeticsButton.getButtonName());
+
         					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
         					{
@@ -723,6 +646,92 @@ int main()
         						if(selectedCosmetic!= 444)
         						{
         							windowDepth = windowDepth+6;	//equal 7
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
+        			if(hygieneButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Hygiene Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.hygieneGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+
+        					window.draw(customerName.getBoxText());
+        					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getHygieneItem(i).getButton());
+        						window.draw(supermarket.getHygieneItem(i).getButtonName());///////////////////////////////////////////////////////////////////////////
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedHygiene = supermarket.checkHygieneButtonPressed(mousePosF);
+        						if(selectedHygiene!= 444)
+        						{
+        							windowDepth = windowDepth+7;	//equal 8
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
+        			if(pharmacyButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Pharmacy Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.pharmacyGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+        					window.draw(customerName.getBoxText());
+
+        					for(int i = 0, max = supermarket.amountOfPharmacyItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getPharmacyItem(i).getButton());
+        						window.draw(supermarket.getPharmacyItem(i).getButtonName());///////////////////////////////////////////////////////////////////////////
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedPharmacy = supermarket.checkPharmacyButtonPressed(mousePosF);
+        						if(selectedPharmacy!= 444)
+        						{
+        							windowDepth = windowDepth+8;	//equal 9
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
         						}
@@ -759,6 +768,10 @@ int main()
         	window.draw(bakeryButton.getButtonName());
         	window.draw(cosmeticsButton.getButton());
         	window.draw(cosmeticsButton.getButtonName());
+        	window.draw(hygieneButton.getButton());
+        	window.draw(hygieneButton.getButtonName());
+        	window.draw(pharmacyButton.getButton());
+        	window.draw(pharmacyButton.getButtonName());
         	window.draw(cartButton.getButton());
         	window.draw(cartButton.getButtonName());
         	window.draw(customerName.getBoxText());
@@ -900,12 +913,7 @@ int main()
     		characterPos = priceUnformatted.find(".");
     		priceFormatted = priceUnformatted.erase(characterPos+3);
     		TextBox deliPricePerPound = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceFormatted, 30, sf::Color::Black);
-/*
-    		priceUnformatted = appendStr("Price Per Unit: $",(std::to_string(supermarket.getDeliItem(selectedDeli).getPricePerUnit())));
-    		characterPos = priceUnformatted.find(".");
-    		priceFormatted = priceUnformatted.erase(characterPos+3);
-    		TextBox deliPricePerUnit = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
-  */
+
     		while(window.pollEvent(event) )
     		{
     			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
@@ -1138,6 +1146,130 @@ int main()
     			window.draw(cosmeticAisle.getBoxText());
     			window.draw(cosmeticBrand.getBoxText());
     			window.draw(cosmeticPrice.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
+
+    	//Construct Hygiene Frame
+    	if(windowDepth == 8)
+    	{
+    		TextBox hygieneName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getHygieneItem(selectedHygiene).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox hygieneAisle = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Hygiene"), 35, sf::Color::Black);
+
+    		priceUnformatted = appendStr("Price: $",(std::to_string(supermarket.getHygieneItem(selectedHygiene).getPricePerUnit())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox hygienePrice = TextBox(sf::Vector2f(0.0f,130.0f), erasFont, priceFormatted, 30, sf::Color::Black);
+
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getHygieneItem(selectedHygiene).getPricePerUnit() , supermarket.getHygieneItem(selectedHygiene).getName(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 7;
+    					}
+    					break;
+    	    		}
+
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 7;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(hygiene);
+    			window.draw(hygieneName.getBoxText());
+    			window.draw(hygieneAisle.getBoxText());
+    			window.draw(hygienePrice.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
+
+    	//Construct Pharmacy Frame
+    	if(windowDepth == 9)
+    	{
+    		TextBox pharmacyName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getPharmacyItem(selectedPharmacy).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox pharmacyAisle = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Pharmacy"), 35, sf::Color::Black);
+
+    		priceUnformatted = appendStr("Price: $",(std::to_string( supermarket.getPharmacyItem(selectedPharmacy).getPricePerCapsules())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox pharmacyPrice = TextBox(sf::Vector2f(0.0f,130.0f), erasFont, priceFormatted, 30, sf::Color::Black);
+
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getPharmacyItem(selectedPharmacy).getPricePerCapsules(), supermarket.getPharmacyItem(selectedPharmacy).getName(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 8;
+    					}
+    					break;
+    	    		}
+
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 8;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(pharmacy);
+    			window.draw(pharmacyName.getBoxText());
+    			window.draw(pharmacyAisle.getBoxText());
+    			window.draw(pharmacyPrice.getBoxText());
     			window.draw(addToCart.getButton());
     			window.draw(addToCart.getButtonName());
     			window.draw(backButton.getButton());
