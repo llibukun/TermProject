@@ -18,14 +18,15 @@
 #include "Button.h"
 
 #include "Produce.h"
+#include "Meats.h"
 
 class Store{
 	private:
 		std::vector<Produce> produceItems;
+		std::vector<Meats> meatItems;
 
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
-		//sf::Text total;
 
 	public:
 		Store();
@@ -35,9 +36,18 @@ class Store{
 		void addProduce(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
 		void produceGrid();
 		int amountOfProduceItems();
-		void addProduce(std::string name, std::string type, double pricePerLlb, Button button );
+		//void addProduce(std::string name, std::string type, double pricePerLlb, Button button );
 		int checkProduceButtonPressed(sf::Vector2f mousePosF);
 		Produce getProduceItem(int pos);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Meat Function Declarations
+				void addMeat(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+				void meatGrid();
+				int amountOfMeatItems();
+				int checkMeatButtonPressed(sf::Vector2f mousePosF);
+				Meats getMeatItem(int pos);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +112,56 @@ Produce Store::getProduceItem(int pos)
 	return produceItems.at(pos);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Meat Functions
+void Store::addMeat(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
+{
+	meatItems.push_back(Meats( name, type,  pricePerLlb, dimensions, font, initText));
+}
+
+void Store::meatGrid()
+{
+		float x = 350.0f;
+		float y = 150.0f;
+		int cnt = 0;
+		for(int i = 0, max = meatItems.size(); i!=max; ++i )
+		{
+			meatItems.at(i).changeButtonPosition(x, y);
+			meatItems.at(i).changeTextPosition(x+5, y+5);
+			x+=200.0f;
+			cnt++;
+
+			if(cnt == 4)
+			{
+				cnt = 0;
+				x = 350.0f;
+				y += 100.0f;
+			}
+		}
+}
+
+int Store::amountOfMeatItems()
+{
+	return meatItems.size();
+}
+
+int Store::checkMeatButtonPressed(sf::Vector2f mousePosF)
+{
+	for(int i = 0, max = meatItems.size(); i!=max;++i)
+		{
+			if(meatItems.at(i).clicked(mousePosF))
+				return i;
+		}
+			return 444;
+}
+
+Meats Store::getMeatItem(int pos)
+{
+	return meatItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
