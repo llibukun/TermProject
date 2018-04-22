@@ -122,7 +122,7 @@ void Store::addToCart(double cost, std::string itemName, sf::Font &font)
 	sf::Text item;
 	item.setString(itemName);
 	item.setFont(font);
-	item.setCharacterSize(25);
+	item.setCharacterSize(35);
 	item.setColor(sf::Color::Black);
 
 	cartPrice.push_back(cost);
@@ -132,13 +132,13 @@ void Store::addToCart(double cost, std::string itemName, sf::Font &font)
 
 void Store::organizeCartContents()
 {
-		float x = 600.0f;
-		float y = 200.0f;
+		float x = 400.0f;
+		float y = 150.0f;
 		int cnt = 0;
 		for(int i = 0, max = cartItems.size(); i!=max; ++i )
 		{
 			cartItems.at(i).setPosition(x, y);
-			y+=35.0f;
+			y+=40.0f;
 		}
 }
 

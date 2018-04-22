@@ -1,10 +1,180 @@
-produce Lettuce vegetable 0.25 Images/lettuce.jpg
-produce Kiwi fruit 1.20 Images/fresh-produce.jpg
-produce Banana fruit 0.10 Images/fresh-produce.jpg
-produce Apple fruit 0.80 Images/fresh-produce.jpg
-produce Mango fruit 1 Images/fresh-produce.jpg
-produce Carrot vegetable 0.50 Images/fresh-produce.jpg
-produce Celery vegetable 0.6 Images/fresh-produce.jpg
-produce Walnuts nut 3.56 Images/fresh-produce.jpg
-produce Watermelon fruit 2.50 Images/fresh-produce.jpg
-produce Lemon fruit 1.50 Images/lemon.jpg
+produce Lettuce vegetable 0.25
+produce Kiwi fruit 1.20
+produce Banana fruit 0.10
+produce Apple fruit 0.80
+produce Mango fruit 1
+produce Carrot vegetable 0.50
+produce Celery vegetable 0.6
+produce Walnuts nut 3.56
+meat Churrasco beef 3.00
+meat Chicken poultry 2.80
+meat Ham pork 1.00
+meat Sirloin beef 2.80
+deli ham 1.95 40.00
+deli mortadella 1.50 25.00
+deli salami 1.30 23.00
+deli pepperoni 1.20 21.99
+deli pastrami 1.40 24.99
+deli sliced_pork_leg 2.60 70.00
+deli capocollo 2.50 50.00
+deli provolone_cheese 1.30 23.00
+deli manchego_cheese 2.50 60.00
+deli swiss_cheese 1.40 24.99
+deli parmesean_cheese 1.40 24.99
+deli cheddar_cheese 0.80 18.99
+deli mozzarella_cheese 0.90 20.00
+deli blue_cheese 1.20 21.99
+bakery chocolate_cakes 15.00
+bakery vanilla_cakes 15.00
+bakery special_cakes 30.00
+bakery pastelitos 8.99
+bakery donuts 7.99
+bakery apple_pie 7.99
+bakery blueberry_pie 7.99
+bakery guava_pie 7.99
+bakery pumpkin_pie 7.99
+bakery spanish_cake_role 12.99
+bakery brownies 5.99
+bakery tiramisu 9.99
+bakery cinammon_rolls 5.99
+bakery cuban_capuchino 11.99
+bakery vanilla_cupcakes 6.99
+bakery chocolate_cupcakes 6.99
+bakery red_velvet_cupcakes 7.99
+bakery mixed_cupcaked 9.99
+bakery muffins 5.99
+bakery croissant 9.99
+bakery pita_bread 9.99
+bakery bagels 4.99
+bakery white_bread 2.99
+pharmacy tylenol_50_capsules 9.99 100
+pharmacy advil_50_capsules 11.99 100
+pharmacy ibuprofen_100_capsules 12.50 100
+pharmacy emergen-C_10_packs 8.55 100
+pharmacy benadryl_50_capsules 12.55 100
+pharmacy chlor-trimeton_50_capsules 12.99 100
+pharmacy allegra_50_capsules 13.99 100
+pharmacy zyrtec_75_capsules 16.99 100
+pharmacy claritin_50_capsules 14.99 100
+pharmacy dayQuil_75_capsules 13.99 100
+pharmacy nyQuil_50_capsules 14.99 100
+snacks tostitos_partybag_chips 8.55 100
+snacks doritos_partybag 12.99 100
+snacks lays_partybag 10.99 100
+snacks mr.Djald's_pretzels 8.99 100
+snacks mr.Djald's_cookies 7.99 100
+snacks mr.Djald's_candy 5.48 100
+snacks mr.Djald's_crackers 6.99 100
+snacks mr.Djald's_mixed_nuts 7.99 100
+snacks my.Djald's_chocolate 5.15 100
+snacks hershey_chocolate 8.99 100
+cosmetics Powder True_Match 8.99
+cosmetics Blush True_Match 8.99
+cosmetics Eyeliner Wet_n_Wild 7.59
+cosmetics Mascara Maybelline 7.59
+cosmetics Lipsticks Covergirl 4.99
+cosmetics Eyeshadow Covergirl 7.99
+cosmetics Bronzer Loreal 7.99
+cosmetics Brushes Elf 12.99
+cosmetics Nail_Polish Sally 5.49
+cosmetics Acetone Great_Value 2.99
+cosmetics Cotton_Balls Great_Value 1.99
+cosmetics Cotton_Swabs Q-tips 2.99
+drinks Coke soft_drinks 0.09
+drinks Sprite soft_drinks 0.09
+drinks Pepsi soft_drinks 0.09
+drinks Mountain_Dew soft_drinks 0.09
+drinks Fanta soft_drinks 0.09
+drinks Sunkist soft_drinks 0.09
+drinks Sunny_D juice 1.18
+drinks Tropicana juice 0.07
+drinks tampico juice 0.05
+drinks Nestle water 0.02
+drinks Dasani water 0.01
+drinks Aquafina water 0.01
+drinks Zephyrhills water 0.02
+drinks Arizona tea 0.03
+drinks Brisk tea 0.03
+drinks Red_Bull sports_and_energy 0.19
+drinks Gatorade sports_and_energy 0.03
+drinks Monster sports_and_energy 0.15
+drinks Rockstar sports_and_energy 0.13
+HotFoods tomato_soup 1.99
+HotFoods broccoli_cheddar_soup 1.99
+HotFoods chili_soup 1.99
+HotFoods french_fries 0.99
+HotFoods sweet_potato_fries 0.99
+HotFoods lime_pepper_chicken_wings 6.99
+HotFoods rotisserie_chicken 5.99
+HotFoods fried_chicken 5.99
+HotFoods egg_salad 3.99
+HotFoods potato_salad 3.99
+HotFoods tuna_salad 3.99
+HotFoods cuban_sandwich 4.99
+HotFoods italian_sandwich 4.99
+HotFoods turkey_sandwich 4.99
+HotFoods roast_beef_sandwich 4.99
+HotFoods mac_and_cheese 2.99
+FrozenFoods broccoli 1.99
+FrozenFoods spinach 1.99
+FrozenFoods brussel_sprouts 1.99
+FrozenFoods strawberry 0.99
+FrozenFoods blueberry 0.99
+FrozenFoods raspberry 0.99
+FrozenFoods mango 0.99
+FrozenFoods pizza 3.99
+FrozenFoods pizza_rolls 2.99
+FrozenFoods bagel_bites 2.99
+FrozenFoods chocolate_chip_waffles 2.99
+FrozenFoods multigrain_waffles 2.99
+FrozenFoods biscuit 1.99
+FrozenFoods french_toast 2.99
+FrozenFoods spicy_chicken_wings 6.99
+FrozenFoods mild_chicken_wings 6.99
+FrozenFoods vanilla_ice_cream 3.99
+FrozenFoods chocolate_ice_cream 3.99
+FrozenFoods strawberry_ice_cream 3.99
+FrozenFoods cookies_and_cream_ice_cream 3.99
+Dairy Greek_Yogurt Yoplait 6 0.99
+Dairy Whole_Milk Publix 128 2.98
+Dairy Sour_Cream Great_Value 16 1.18
+Dairy White_Eggs Great_Value 18 2.72
+Dairy Butter Beurre_President 7 5.74
+Dairy Vanilla_Soymilk Silk 65 4.02
+Dairy Almond_Milk Blue_Diamond 64 7.14
+Dairy Creamer Coffee-mate 32 3.98
+Dairy Milk_Powder Nido 56.3 15.99
+Dairy Skim_Milk Nestle 120 3.45
+Grains Brown_Rice Royal_Basmati 10 false true 32.99
+Grains White_Rice White 15 true true 41.34
+Grains Cereal Honey_Bunches 2.87 false true 6.48
+Grains Cereal Cheerios 1.35 false false 4.76
+Grains Spaghetti Barilla 1 false true 11.17
+Grains Spaghetti Ronzoni 2 false false 9.95
+Grains Penne Barilla 1.5 true false 10.98
+Grains Baked_Beans Bush's 1.75 false false 2.28
+Grains Kidney_Beans Progresso 2.5 false true 3.48
+Grains Cereal Lucky_Charms 1.25 false true 3.64
+Grains Raisin_Bran Kellogg's 1 false true 4.58
+Hygiene soap 2.99
+Hygiene toothpaste 1.99
+Hygiene lotion 6.99
+Hygiene cream 5.99
+Hygiene hand_sanitizer 3.99
+Hygiene shampoo 8.99
+Hygiene conditioner 8.99
+Hygiene toothbrush 1.99
+Hygiene baby_wipes 3.99
+Hygiene deodorant 2.99
+Hygiene shaving_cream 2.99
+Hygiene shaving_razor 4.99
+HomeGoods paper_towels 0.99
+HomeGoods plastic_utensils 3.99
+HomeGoods disposable_plates 4.99
+HomeGoods aluminum_foil 7.99
+HomeGoods saran_wrap 3.99
+HomeGoods plastic_containers 11.99
+HomeGoods plastic_cups 2.99
+HomeGoods light_bulbs 4.99
+HomeGoods napkins 3.99
+HomeGoods plastic_gloves 8.99

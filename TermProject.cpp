@@ -31,6 +31,8 @@ std::string priceUnformatted;
 int characterPos;
 std:: string priceFormatted;
 
+sf::Texture backdropTexture;
+
 sf::Texture initial;
 sf::Texture second;
 sf::Texture produceTexture;
@@ -44,6 +46,7 @@ sf::Texture bakeryTexture;
 sf::Texture snacksTexture;
 sf::Texture deliTexture;
 sf::Texture hygieneTexture;
+sf::Texture exitTexture;
 
 std::string appendStr(std::string str1, std::string str2);
 
@@ -85,7 +88,7 @@ int main()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		if (!font.loadFromFile("arial.ttf"))
-					return EXIT_FAILURE;
+			return EXIT_FAILURE;
 
 		if (!erasFont.loadFromFile("ErasITC-DEMI.ttf"))
 			return EXIT_FAILURE;
@@ -101,7 +104,11 @@ int main()
 	        std::cout<<"Load failed"<<std::endl;
 	        system("pause");
 	    }
-
+	    if (!backdropTexture.loadFromFile("Images/Introduction.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
 	    if (!produceTexture.loadFromFile("Images/Produce.png"))
 	    {
 	        std::cout<<"Load failed"<<std::endl;
@@ -169,6 +176,11 @@ int main()
 	        system("pause");
 	    }
 
+	    if (!exitTexture.loadFromFile("Images/Exit.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
 
 	    sf::Sprite entrance;
 	    entrance.setPosition(window.getSize().x/2 - 600.0f, 0.0f);
@@ -176,6 +188,13 @@ int main()
 
 	    sf::Sprite background;
 	    background.setTexture(second);
+
+	    sf::Sprite backdrop;
+	    backdrop.setTexture(backdropTexture);
+
+	    sf::Sprite exit;
+	    exit.scale(1.1,1.1);
+	    exit.setTexture(exitTexture);
 
 	    sf::Sprite produce;
 	    produce.setPosition(window.getSize().x/2 - 500.0f, 500.0f);
@@ -419,6 +438,7 @@ int main()
 
         window.clear(sf::Color::White);
         window.draw(background);
+        window.draw(backdrop);
         window.draw(produceButton.getButton());
         window.draw(produceButton.getButtonName());
         window.draw(meatsButton.getButton());
@@ -507,11 +527,11 @@ int main()
     	{
     		supermarket.organizeCartContents();
 
-    		priceUnformatted = appendStr("Total: $",(std::to_string(supermarket.calculateCost())));
+    		priceUnformatted = appendStr("$",(std::to_string(supermarket.calculateCost())));
     		characterPos = priceUnformatted.find(".");
     		priceFormatted = priceUnformatted.erase(characterPos+3);
 
-    		TextBox total = TextBox( sf::Vector2f(window.getSize().x/2,700.0f), erasFont, priceFormatted, 30, sf::Color::Red);
+    		TextBox total = TextBox( sf::Vector2f(520.0f,530.0f), erasFont, priceFormatted, 40, sf::Color::Black);
 
     		while(window.pollEvent(event) )
     		{
@@ -523,8 +543,9 @@ int main()
     					break;
 					}
     			}
-    			window.clear(sf::Color::Yellow);
-
+    			window.clear(sf::Color::White);
+                window.draw(background);
+                window.draw(exit);
     			for(int i = 0, max = supermarket.getCartSize(); i!=max; ++i)
     			{
     				window.draw(supermarket.getCartItem(i));
