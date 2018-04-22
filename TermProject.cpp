@@ -26,6 +26,7 @@ std::string line;
 
 int selectedProduce;
 int selectedMeat;
+int selectedDeli;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -82,7 +83,10 @@ int main()
 			supermarket.addProduce(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("meat")==0){
 			supermarket.addMeat(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+		}else if (lineVec.at(0).compare("deli")==0){
+			supermarket.addDeli(lineVec.at(1), stod(lineVec.at(2)), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
 		}
+
 
 		lineVec.clear();
 	}
@@ -491,6 +495,62 @@ int main()
         				}
 
         			}
+        			if(deliButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Deli Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.deliGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+        					window.draw(produceButton.getButton());
+        					window.draw(produceButton.getButtonName());
+        					window.draw(meatsButton.getButton());
+        					window.draw(meatsButton.getButtonName());
+        					window.draw(grainsButton.getButton());
+        					window.draw(grainsButton.getButtonName());
+        					window.draw(dairyButton.getButton());
+        					window.draw(dairyButton.getButtonName());
+        					window.draw(drinksButton.getButton());
+        					window.draw(deliButton.getButton());
+        					window.draw(deliButton.getButtonName());
+        					window.draw(cartButton.getButton());
+        					window.draw(cartButton.getButtonName());
+        					window.draw(drinksButton.getButtonName());
+        					window.draw(customerName.getBoxText());
+        					for(int i = 0, max = supermarket.amountOfDeliItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getDeliItem(i).getButton());
+        						window.draw(supermarket.getDeliItem(i).getButtonName());
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedDeli = supermarket.checkDeliButtonPressed(mousePosF);
+        						if(selectedDeli != 444)
+        						{
+        							windowDepth = windowDepth+3;	//equal 4
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
         			break;
 				}
         	}
@@ -642,6 +702,71 @@ int main()
     	    			window.display();
     	    		}
     	    	}
+    	//Deli Frame
+    	if(windowDepth == 4)
+    	{
+    		TextBox deliName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getDeliItem(selectedDeli).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox deliType = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Deli"), 35, sf::Color::Black);
+
+    		priceUnformatted = appendStr("Price Per Llb: $",(std::to_string(supermarket.getDeliItem(selectedDeli).getPricePerLlb())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox deliPricePerPound = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
+/*
+    		priceUnformatted = appendStr("Price Per Unit: $",(std::to_string(supermarket.getDeliItem(selectedDeli).getPricePerUnit())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox deliPricePerUnit = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
+  */
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getDeliItem(selectedDeli).getPricePerLlb() , supermarket.getDeliItem(selectedDeli).getButtonNameStr(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 3;
+    					}
+    					break;
+    	    		}
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 3;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(deli);
+    			window.draw(deliName.getBoxText());
+    			window.draw(deliType.getBoxText());
+    			window.draw(deliPricePerPound.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
 
     	if(windowDepth == 37)
     	{

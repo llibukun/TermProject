@@ -10,20 +10,20 @@ meat Churrasco beef 3.00
 meat Chicken poultry 2.80
 meat Ham pork 1.00
 meat Sirloin beef 2.80
-deli ham 1.95 40.00
-deli mortadella 1.50 25.00
-deli salami 1.30 23.00
-deli pepperoni 1.20 21.99
-deli pastrami 1.40 24.99
-deli sliced_pork_leg 2.60 70.00
-deli capocollo 2.50 50.00
-deli provolone_cheese 1.30 23.00
-deli manchego_cheese 2.50 60.00
-deli swiss_cheese 1.40 24.99
-deli parmesean_cheese 1.40 24.99
-deli cheddar_cheese 0.80 18.99
-deli mozzarella_cheese 0.90 20.00
-deli blue_cheese 1.20 21.99
+deli Ham 1.95 40.00
+deli Mortadella 1.50 25.00
+deli Salami 1.30 23.00
+deli Pepperoni 1.20 21.99
+deli Pastrami 1.40 24.99
+deli Sliced_Pork_Leg 2.60 70.00
+deli Capocollo 2.50 50.00
+deli Provolone_Cheese 1.30 23.00
+deli Manchego_Cheese 2.50 60.00
+deli Swiss_Cheese 1.40 24.99
+deli Parmesean_Cheese 1.40 24.99
+deli Cheddar_Cheese 0.80 18.99
+deli Mozzarella_Cheese 0.90 20.00
+deli Blue_Cheese 1.20 21.99
 bakery chocolate_cakes 15.00
 bakery vanilla_cakes 15.00
 bakery special_cakes 30.00

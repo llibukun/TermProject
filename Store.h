@@ -19,11 +19,16 @@
 
 #include "Produce.h"
 #include "Meats.h"
+#include "Deli.h"
+#include "Drinks.h"
 
 class Store{
 	private:
 		std::vector<Produce> produceItems;
 		std::vector<Meats> meatItems;
+		std::vector<Deli> deliItems;
+
+		std::vector<Drinks> drinkItems;
 
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
@@ -43,12 +48,32 @@ class Store{
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Meat Function Declarations
-				void addMeat(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
-				void meatGrid();
-				int amountOfMeatItems();
-				int checkMeatButtonPressed(sf::Vector2f mousePosF);
-				Meats getMeatItem(int pos);
+		void addMeat(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		void meatGrid();
+		int amountOfMeatItems();
+		int checkMeatButtonPressed(sf::Vector2f mousePosF);
+		Meats getMeatItem(int pos);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Deli Function Declarations
+		void addDeli(std::string name, double pricePerLlb, double pricePerUnit, sf::Vector2f dimensions, sf::Font &font, std::string initText);
+		void deliGrid();
+		int amountOfDeliItems();
+		int checkDeliButtonPressed(sf::Vector2f mousePosF);
+		Deli getDeliItem(int pos);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Drinks Function Declarations
+		void addDrinks(std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions, sf::Font &font, std::string initText);
+		void drinksGrid();
+		int amountOfDrinksItems();
+		int checkDrinksButtonPressed(sf::Vector2f mousePosF);
+		Drinks getDrinksItem(int pos);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Cashier Function Declaration
@@ -163,6 +188,103 @@ Meats Store::getMeatItem(int pos)
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Deli Function Implementations
+void Store::addDeli(std::string name, double pricePerLlb,  double pricePerUnit, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
+{
+    deliItems.push_back(Deli( name, pricePerLlb, pricePerUnit,  dimensions, font, initText));
+}
+
+void Store::deliGrid()
+{
+    float x = 350.0f;
+    float y = 150.0f;
+    int cnt = 0;
+    for(int i = 0, max = deliItems.size(); i!=max; ++i )
+    {
+        deliItems.at(i).changeButtonPosition(x, y);
+        deliItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 4)
+        {
+            cnt = 0;
+            x = 350.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkDeliButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = deliItems.size(); i!=max;++i)
+    {
+        if(deliItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfDeliItems()
+{
+    return deliItems.size();
+}
+
+Deli Store::getDeliItem(int pos)
+{
+    return deliItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Drinks Function Implementations
+void Store::addDrinks(std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
+{
+	drinkItems.push_back(Drinks( name, category, pricePerOz, dimensions, font, initText));
+}
+void Store::drinksGrid()
+{
+	float x = 350.0f;
+	float y = 150.0f;
+	int cnt = 0;
+	for(int i = 0, max = drinkItems.size(); i!=max; ++i )
+	{
+		drinkItems.at(i).changeButtonPosition(x, y);
+		drinkItems.at(i).changeTextPosition(x+5, y+5);
+		x+=200.0f;
+		cnt++;
+
+		if(cnt == 4)
+		{
+			cnt = 0;
+			x = 350.0f;
+			y += 100.0f;
+		}
+	}
+}
+
+int Store::amountOfDrinksItems()
+{
+	return drinkItems.size();
+}
+
+int Store::checkDrinksButtonPressed(sf::Vector2f mousePosF)
+{
+	for(int i = 0, max = drinkItems.size(); i!=max;++i)
+	{
+		if(drinkItems.at(i).clicked(mousePosF))
+			return i;
+	}
+		return 444;
+}
+Drinks Store::getDrinksItem(int pos)
+{
+    return drinkItems.at(pos);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Cashier Functions
@@ -211,9 +333,7 @@ int Store::getCartSize()
 {
 	return cartItems.size();
 }
-
-
-/////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
