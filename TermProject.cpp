@@ -27,6 +27,7 @@ std::string line;
 int selectedProduce;
 int selectedMeat;
 int selectedDeli;
+int selectedDrink;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -78,13 +79,14 @@ int main()
 		    lineVec.push_back(line);
 		}
 	//The following bool expressions check what sections the each entry belongs to.
-		if (lineVec.at(0).compare("produce") == 0)
-		{
+		if (lineVec.at(0).compare("Produce") == 0){
 			supermarket.addProduce(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
-		}else if (lineVec.at(0).compare("meat")==0){
+		}else if (lineVec.at(0).compare("Meat")==0){
 			supermarket.addMeat(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
-		}else if (lineVec.at(0).compare("deli")==0){
+		}else if (lineVec.at(0).compare("Deli")==0){
 			supermarket.addDeli(lineVec.at(1), stod(lineVec.at(2)), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+		}else if (lineVec.at(0).compare("Drinks")==0){
+			supermarket.addDrinks(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
 		}
 
 
@@ -333,7 +335,7 @@ int main()
     	}
 
 
-//Window depth 1
+//Window depth 1 (Menu)
     	if(windowDepth == 1)
     	{
     	while(window.pollEvent(event) )
@@ -551,6 +553,62 @@ int main()
         				}
 
         			}
+        			if(drinksButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Drinks Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.drinksGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+        					window.draw(produceButton.getButton());
+        					window.draw(produceButton.getButtonName());
+        					window.draw(meatsButton.getButton());
+        					window.draw(meatsButton.getButtonName());
+        					window.draw(grainsButton.getButton());
+        					window.draw(grainsButton.getButtonName());
+        					window.draw(dairyButton.getButton());
+        					window.draw(dairyButton.getButtonName());
+        					window.draw(drinksButton.getButton());
+        					window.draw(deliButton.getButton());
+        					window.draw(deliButton.getButtonName());
+        					window.draw(cartButton.getButton());
+        					window.draw(cartButton.getButtonName());
+        					window.draw(drinksButton.getButtonName());
+        					window.draw(customerName.getBoxText());
+        					for(int i = 0, max = supermarket.amountOfDrinksItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getDrinksItem(i).getButton());
+        						window.draw(supermarket.getDrinksItem(i).getButtonName());
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedDrink = supermarket.checkDrinksButtonPressed(mousePosF);
+        						if(selectedDrink != 444)
+        						{
+        							windowDepth = windowDepth+4;	//equal 5
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
         			break;
 				}
         	}
@@ -589,7 +647,7 @@ int main()
     		priceUnformatted = appendStr("Price Per Llb: $",(std::to_string(supermarket.getProduceItem(selectedProduce).getPricePerLlb())));
     		characterPos = priceUnformatted.find(".");
 			priceFormatted = priceUnformatted.erase(characterPos+3);
-    		TextBox producePrice = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
+    		TextBox producePrice = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceFormatted, 30, sf::Color::Black);
 
     		while(window.pollEvent(event) )
     		{
@@ -648,7 +706,7 @@ int main()
     	    		priceUnformatted = appendStr("Price Per Llb: $",(std::to_string(supermarket.getMeatItem(selectedMeat).getPricePerLlb())));
     	    		characterPos = priceUnformatted.find(".");
     				priceFormatted = priceUnformatted.erase(characterPos+3);
-    	    		TextBox meatPrice = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
+    	    		TextBox meatPrice = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceFormatted, 30, sf::Color::Black);
 
     	    		while(window.pollEvent(event) )
     	    		{
@@ -711,7 +769,7 @@ int main()
     		priceUnformatted = appendStr("Price Per Llb: $",(std::to_string(supermarket.getDeliItem(selectedDeli).getPricePerLlb())));
     		characterPos = priceUnformatted.find(".");
     		priceFormatted = priceUnformatted.erase(characterPos+3);
-    		TextBox deliPricePerPound = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceUnformatted, 30, sf::Color::Black);
+    		TextBox deliPricePerPound = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, priceFormatted, 30, sf::Color::Black);
 /*
     		priceUnformatted = appendStr("Price Per Unit: $",(std::to_string(supermarket.getDeliItem(selectedDeli).getPricePerUnit())));
     		characterPos = priceUnformatted.find(".");
@@ -759,6 +817,71 @@ int main()
     			window.draw(deliName.getBoxText());
     			window.draw(deliType.getBoxText());
     			window.draw(deliPricePerPound.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
+
+    	//Drinks Frame
+    	if(windowDepth == 5)
+    	{
+    		TextBox drinkName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getDrinksItem(selectedDrink).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox drinkAisle = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Drinks"), 35, sf::Color::Black);
+
+    		TextBox drinkCategory = TextBox(sf::Vector2f(0.0f,100.0f), erasFont, appendStr("Category:  ", supermarket.getDrinksItem(selectedDrink).getCategory()), 35, sf::Color::Black);
+
+    		priceUnformatted = appendStr("Price Per Container (8 Oz): $",(std::to_string(supermarket.getDrinksItem(selectedDrink).getPricePerContainer())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox drinkPricePerOz = TextBox(sf::Vector2f(0.0f,150.0f), erasFont, priceFormatted, 30, sf::Color::Black);
+
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getDrinksItem(selectedDrink).getPricePerContainer() , supermarket.getDrinksItem(selectedDrink).getButtonNameStr(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 4;
+    					}
+    					break;
+    	    		}
+
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 4;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(drinks);
+    			window.draw(drinkName.getBoxText());
+    			window.draw(drinkCategory.getBoxText());
+    			window.draw(drinkAisle.getBoxText());
+    			window.draw(drinkPricePerOz.getBoxText());
     			window.draw(addToCart.getButton());
     			window.draw(addToCart.getButtonName());
     			window.draw(backButton.getButton());

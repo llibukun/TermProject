@@ -21,15 +21,15 @@ class Drinks
 
     const std::string name;
     const std::string category;
-    double pricePerOz;
+    double pricePerContainer;
     int quantity;
 
 
     public:
-      Drinks(std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+      Drinks(std::string name, std::string category, double pricePerContainer, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
       std::string getName();
       std::string getCategory();
-      double getPricePerOz();
+      double getPricePerContainer();
       double getQuantity();
 
       void changeButtonPosition(float x, float y);
@@ -44,7 +44,7 @@ class Drinks
 };
 
 // CONSTRUCTOR
-Drinks::Drinks (std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions,  sf::Font &font, std::string initText):name(name), category(category)
+Drinks::Drinks (std::string name, std::string category, double pricePerContainer, sf::Vector2f dimensions,  sf::Font &font, std::string initText):name(name), category(category)
 {
 	button.setSize(dimensions);
 	button.setOutlineThickness(5);
@@ -55,7 +55,7 @@ Drinks::Drinks (std::string name, std::string category, double pricePerOz, sf::V
 	nameText.setCharacterSize(15);
 	nameText.setColor(sf::Color::Black);
 
-	this->pricePerOz = pricePerOz;
+	this->pricePerContainer = pricePerContainer;
 	this ->quantity = 100;
 }
 
@@ -95,9 +95,9 @@ void Drinks::changeTextPosition(float x, float y)
 }
 
 
-double Drinks::getPricePerOz()
+double Drinks::getPricePerContainer()
 {
-	return this->pricePerOz;
+	return this->pricePerContainer;
 }
 
 std::string Drinks::getName()

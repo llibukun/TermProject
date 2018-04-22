@@ -67,7 +67,7 @@ class Store{
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Drinks Function Declarations
-		void addDrinks(std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions, sf::Font &font, std::string initText);
+		void addDrinks(std::string name, std::string category, double pricePerContianer, sf::Vector2f dimensions, sf::Font &font, std::string initText);
 		void drinksGrid();
 		int amountOfDrinksItems();
 		int checkDrinksButtonPressed(sf::Vector2f mousePosF);
@@ -239,9 +239,9 @@ Deli Store::getDeliItem(int pos)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Drinks Function Implementations
-void Store::addDrinks(std::string name, std::string category, double pricePerOz, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
+void Store::addDrinks(std::string name, std::string category, double pricePerContainer, sf::Vector2f dimensions,  sf::Font &font, std::string initText)
 {
-	drinkItems.push_back(Drinks( name, category, pricePerOz, dimensions, font, initText));
+	drinkItems.push_back(Drinks( name, category, pricePerContainer, dimensions, font, initText));
 }
 void Store::drinksGrid()
 {

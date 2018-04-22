@@ -1,104 +1,104 @@
-produce Lettuce vegetable 0.25
-produce Kiwi fruit 1.20
-produce Banana fruit 0.10
-produce Apple fruit 0.80
-produce Mango fruit 1
-produce Carrot vegetable 0.50
-produce Celery vegetable 0.6
-produce Walnuts nut 3.56
-meat Churrasco beef 3.00
-meat Chicken poultry 2.80
-meat Ham pork 1.00
-meat Sirloin beef 2.80
-deli Ham 1.95 40.00
-deli Mortadella 1.50 25.00
-deli Salami 1.30 23.00
-deli Pepperoni 1.20 21.99
-deli Pastrami 1.40 24.99
-deli Sliced_Pork_Leg 2.60 70.00
-deli Capocollo 2.50 50.00
-deli Provolone_Cheese 1.30 23.00
-deli Manchego_Cheese 2.50 60.00
-deli Swiss_Cheese 1.40 24.99
-deli Parmesan_Cheese 1.40 24.99
-deli Cheddar_Cheese 0.80 18.99
-deli Mozzarella_Cheese 0.90 20.00
-deli Blue_Cheese 1.20 21.99
-bakery Chocolate_Cakes 15.00
-bakery Vanilla_Cakes 15.00
-bakery Special_Cakes 30.00
-bakery Pastelitos 8.99
-bakery Donuts 7.99
-bakery Apple_Pie 7.99
-bakery Blueberry_Pie 7.99
-bakery Guava_Pie 7.99
-bakery Pumpkin_Pie 7.99
-bakery Spanish_Cake_Role 12.99
-bakery Brownies 5.99
-bakery Tiramisu 9.99
-bakery Cinammon_Rolls 5.99
-bakery Cuban_Capuchino 11.99
-bakery Vanilla_Cupcakes 6.99
-bakery Chocolate_Cupcakes 6.99
-bakery Red_Velvet_Cupcakes 7.99
-bakery Mixed_Cupcakes 9.99
-bakery Muffins 5.99
-bakery Croissant 9.99
-bakery Pita_Bread 9.99
-bakery Bagels 4.99
-bakery White_Bread 2.99
-pharmacy Tylenol_50_Capsules 9.99 100
-pharmacy Advil_50_Capsules 11.99 100
-pharmacy Ibuprofen_100_Capsules 12.50 100
-pharmacy Emergen-C_10_Packs 8.55 100
-pharmacy Benadryl_50_Capsules 12.55 100
-pharmacy Chlor-trimeton_50_Capsules 12.99 100
-pharmacy Allegra_50_Capsules 13.99 100
-pharmacy Zyrtec_75_Capsules 16.99 100
-pharmacy Claritin_50_Capsules 14.99 100
-pharmacy DayQuil_75_Capsules 13.99 100
-pharmacy NyQuil_50_Capsules 14.99 100
-snacks Tostitos_Partybag_Chips 8.55 100
-snacks Doritos_Partybag 12.99 100
-snacks Lays_Partybag 10.99 100
-snacks Mr.Djald's_Pretzels 8.99 100
-snacks Mr.Djald's_Cookies 7.99 100
-snacks Mr.Djald's_Candy 5.48 100
-snacks Mr.Djald's_Crackers 6.99 100
-snacks Mr.Djald's_Mixed_Nuts 7.99 100
-snacks Mr.Djald's_Chocolate 5.15 100
-snacks Hershey_Chocolate 8.99 100
-cosmetics Powder True_Match 8.99
-cosmetics Blush True_Match 8.99
-cosmetics Eyeliner Wet_n_Wild 7.59
-cosmetics Mascara Maybelline 7.59
-cosmetics Lipsticks Covergirl 4.99
-cosmetics Eyeshadow Covergirl 7.99
-cosmetics Bronzer Loreal 7.99
-cosmetics Brushes Elf 12.99
-cosmetics Nail_Polish Sally 5.49
-cosmetics Acetone Great_Value 2.99
-cosmetics Cotton_Balls Great_Value 1.99
-cosmetics Cotton_Swabs Q-tips 2.99
-drinks Coke soft_drinks 0.09
-drinks Sprite soft_drinks 0.09
-drinks Pepsi soft_drinks 0.09
-drinks Mountain_Dew soft_drinks 0.09
-drinks Fanta soft_drinks 0.09
-drinks Sunkist soft_drinks 0.09
-drinks Sunny_D juice 1.18
-drinks Tropicana juice 0.07
-drinks Tampico juice 0.05
-drinks Nestle water 0.02
-drinks Dasani water 0.01
-drinks Aquafina water 0.01
-drinks Zephyrhills water 0.02
-drinks Arizona tea 0.03
-drinks Brisk tea 0.03
-drinks Red_Bull sports_and_energy 0.19
-drinks Gatorade sports_and_energy 0.03
-drinks Monster sports_and_energy 0.15
-drinks Rockstar sports_and_energy 0.13
+Produce Lettuce vegetable 0.25
+Produce Kiwi fruit 1.20
+Produce Banana fruit 0.10
+Produce Apple fruit 0.80
+Produce Mango fruit 1
+Produce Carrot vegetable 0.50
+Produce Celery vegetable 0.6
+Produce Walnuts nut 3.56
+Meat Churrasco beef 3.00
+Meat Chicken poultry 2.80
+Meat Ham pork 1.00
+Meat Sirloin beef 2.80
+Deli Ham 1.95 40.00
+Deli Mortadella 1.50 25.00
+Deli Salami 1.30 23.00
+Deli Pepperoni 1.20 21.99
+Deli Pastrami 1.40 24.99
+Deli Sliced_Pork_Leg 2.60 70.00
+Deli Capocollo 2.50 50.00
+Deli Provolone_Cheese 1.30 23.00
+Deli Manchego_Cheese 2.50 60.00
+Deli Swiss_Cheese 1.40 24.99
+Deli Parmesan_Cheese 1.40 24.99
+Deli Cheddar_Cheese 0.80 18.99
+Deli Mozzarella_Cheese 0.90 20.00
+Deli Blue_Cheese 1.20 21.99
+Bakery Chocolate_Cakes 15.00
+Bakery Vanilla_Cakes 15.00
+Bakery Special_Cakes 30.00
+Bakery Pastelitos 8.99
+Bakery Donuts 7.99
+Bakery Apple_Pie 7.99
+Bakery Blueberry_Pie 7.99
+Bakery Guava_Pie 7.99
+Bakery Pumpkin_Pie 7.99
+Bakery Spanish_Cake_Role 12.99
+Bakery Brownies 5.99
+Bakery Tiramisu 9.99
+Bakery Cinammon_Rolls 5.99
+Bakery Cuban_Capuchino 11.99
+Bakery Vanilla_Cupcakes 6.99
+Bakery Chocolate_Cupcakes 6.99
+Bakery Red_Velvet_Cupcakes 7.99
+Bakery Mixed_Cupcakes 9.99
+Bakery Muffins 5.99
+Bakery Croissant 9.99
+Bakery Pita_Bread 9.99
+Bakery Bagels 4.99
+Bakery White_Bread 2.99
+Pharmacy Tylenol_50_Capsules 9.99 100
+Pharmacy Advil_50_Capsules 11.99 100
+Pharmacy Ibuprofen_100_Capsules 12.50 100
+Pharmacy Emergen-C_10_Packs 8.55 100
+Pharmacy Benadryl_50_Capsules 12.55 100
+Pharmacy Chlor-trimeton_50_Capsules 12.99 100
+Pharmacy Allegra_50_Capsules 13.99 100
+Pharmacy Zyrtec_75_Capsules 16.99 100
+Pharmacy Claritin_50_Capsules 14.99 100
+Pharmacy DayQuil_75_Capsules 13.99 100
+Pharmacy NyQuil_50_Capsules 14.99 100
+Snacks Tostitos_Partybag_Chips 8.55 100
+Snacks Doritos_Partybag 12.99 100
+Snacks Lays_Partybag 10.99 100
+Snacks Mr.Djald's_Pretzels 8.99 100
+Snacks Mr.Djald's_Cookies 7.99 100
+Snacks Mr.Djald's_Candy 5.48 100
+Snacks Mr.Djald's_Crackers 6.99 100
+Snacks Mr.Djald's_Mixed_Nuts 7.99 100
+Snacks Mr.Djald's_Chocolate 5.15 100
+Snacks Hershey_Chocolate 8.99 100
+Cosmetics Powder True_Match 8.99
+Cosmetics Blush True_Match 8.99
+Cosmetics Eyeliner Wet_n_Wild 7.59
+Cosmetics Mascara Maybelline 7.59
+Cosmetics Lipsticks Covergirl 4.99
+Cosmetics Eyeshadow Covergirl 7.99
+Cosmetics Bronzer Loreal 7.99
+Cosmetics Brushes Elf 12.99
+Cosmetics Nail_Polish Sally 5.49
+Cosmetics Acetone Great_Value 2.99
+Cosmetics Cotton_Balls Great_Value 1.99
+Cosmetics Cotton_Swabs Q-tips 2.99
+Drinks Coke soft_drinks 0.75
+Drinks Sprite soft_drinks 0.75
+Drinks Pepsi soft_drinks 0.75
+Drinks Mountain_Dew soft_drinks 0.95
+Drinks Fanta soft_drinks 0.75
+Drinks Sunkist soft_drinks 0.75
+Drinks Sunny_D juice 1.18
+Drinks Tropicana juice 1.25
+Drinks Tampico juice 1.25
+Drinks Nestle water 1.05
+Drinks Dasani water 1.50
+Drinks Aquafina water 0.95
+Drinks Zephyrhills water 1.75
+Drinks Arizona tea 2.50
+Drinks Brisk tea 2.05
+Drinks Red_Bull sports_and_energy 2.50
+Drinks Gatorade sports_and_energy 2.50
+Drinks Monster sports_and_energy 2.75
+Drinks Rockstar sports_and_energy 2.75
 HotFoods Tomato_Soup 1.99
 HotFoods Broccoli_Cheddar_Soup 1.99
 HotFoods Chili_Soup 1.99
