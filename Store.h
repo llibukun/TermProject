@@ -22,6 +22,7 @@
 #include "Deli.h"
 #include "Drinks.h"
 #include "Bakery.h"
+#include "Cosmetics.h"
 
 class Store{
 	private:
@@ -30,6 +31,7 @@ class Store{
 		std::vector<Deli> deliItems;
 		std::vector<Drinks> drinkItems;
 		std::vector<Bakery> bakeryItems;
+		std::vector<Cosmetics> cosmeticsItems;
 
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
@@ -84,6 +86,15 @@ class Store{
 		int checkBakeryButtonPressed(sf::Vector2f mousePosF);
 		Bakery getBakeryItem(int pos);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		 //Cosmetics Function Declarations
+		        void addCosmetics(std::string name, std::string brand, double price, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		        void cosmeticsGrid();
+		        int amountOfCosmeticsItems();
+		        int checkCosmeticsButtonPressed(sf::Vector2f mousePosF);
+		        Cosmetics getCosmeticsItem(int pos);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -346,6 +357,55 @@ Bakery Store::getBakeryItem(int pos)
     return bakeryItems.at(pos);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Cosmetics Function Implementation
+void Store::addCosmetics(std::string name, std::string brand, double price, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+    cosmeticsItems.push_back(Cosmetics( name,  brand,  price,  dimensions, font, initText));
+}
+
+void Store::cosmeticsGrid()
+{
+    float x = 350.0f;
+    float y = 150.0f;
+    int cnt = 0;
+    for(int i = 0, max = cosmeticsItems.size(); i!=max; ++i )
+    {
+        cosmeticsItems.at(i).changeButtonPosition(x, y);
+        cosmeticsItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 4)
+        {
+            cnt = 0;
+            x = 350.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkCosmeticsButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = cosmeticsItems.size(); i!=max;++i)
+    {
+        if(cosmeticsItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfCosmeticsItems()
+{
+    return cosmeticsItems.size();
+}
+
+Cosmetics Store::getCosmeticsItem(int pos)
+{
+    return cosmeticsItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

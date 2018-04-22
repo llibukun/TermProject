@@ -29,6 +29,7 @@ int selectedMeat;
 int selectedDeli;
 int selectedDrink;
 int selectedBakery;
+int selectedCosmetic;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -81,19 +82,18 @@ int main()
 		}
 	//The following bool expressions check what sections the each entry belongs to.
 		if (lineVec.at(0).compare("Produce") == 0){
-			supermarket.addProduce(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+			supermarket.addProduce(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("Meat")==0){
-			supermarket.addMeat(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+			supermarket.addMeat(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("Deli")==0){
-			supermarket.addDeli(lineVec.at(1), stod(lineVec.at(2)), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+			supermarket.addDeli(lineVec.at(1), stod(lineVec.at(2)), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("Drinks")==0){
-			supermarket.addDrinks(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(100,30), font, lineVec.at(1));
+			supermarket.addDrinks(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("Bakery") == 0){
-			supermarket.addBakery(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(100,30), font, lineVec.at(1));
+			supermarket.addBakery(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
+		}else if(lineVec.at(0).compare("Cosmetics") == 0){
+			supermarket.addCosmetics(lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}
-
-
-
 		lineVec.clear();
 	}
 		productDataFile.close();	//Closes the stream of productDataFile when the eof has been reached.
@@ -269,7 +269,8 @@ int main()
 	Button drinksButton = Button(sf::Vector2f(200,57), sf::Vector2f(5.0f, 273.0f) , font, "Drinks", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button deliButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 340.0f), font, "Deli", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button bakeryButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 407.0f), font, "Bakery", 5, 25, sf::Color::Black, sf::Color::Black);
-	Button cartButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1085.0f, 20.0f) , font, "Checkout", 9, 22, sf::Color::Black, sf::Color::Red);
+	Button cosmeticsButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 474.0f), font, "Cosmetics", 5, 25, sf::Color::Black, sf::Color::Black);
+	Button cartButton = Button(sf::Vector2f(125.0f, 45.0f), sf::Vector2f(1080.0f, 20.0f) , font, "Checkout", 9, 22, sf::Color::Black, sf::Color::Red);
 
 	Button addToCart = Button(sf::Vector2f(150.0f, 50.0f), sf::Vector2f(600.0f, 100.0f) , font, "Add to Cart", 3, 25, sf::Color::Black, sf::Color::Black);
 	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1095.0f, 20.0f) , font, "Go Back", 9, 22, sf::Color::Black, sf::Color::Red);
@@ -672,33 +673,97 @@ int main()
         				}
 
         			}
+        			if(cosmeticsButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Cosmetics Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.cosmeticsGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+        					window.draw(produceButton.getButton());
+        					window.draw(produceButton.getButtonName());
+        					window.draw(meatsButton.getButton());
+        					window.draw(meatsButton.getButtonName());
+        					window.draw(grainsButton.getButton());
+        					window.draw(grainsButton.getButtonName());
+        					window.draw(dairyButton.getButton());
+        					window.draw(dairyButton.getButtonName());
+        					window.draw(drinksButton.getButton());
+        					window.draw(deliButton.getButton());
+        					window.draw(deliButton.getButtonName());
+        					window.draw(cartButton.getButton());
+        					window.draw(cartButton.getButtonName());
+        					window.draw(drinksButton.getButtonName());
+        					window.draw(bakeryButton.getButton());
+        					window.draw(bakeryButton.getButtonName());
+        					window.draw(cosmeticsButton.getButton());
+        					window.draw(cosmeticsButton.getButtonName());
+        					window.draw(customerName.getBoxText());
+        					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getCosmeticsItem(i).getButton());
+        						window.draw(supermarket.getCosmeticsItem(i).getButtonName());
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedCosmetic = supermarket.checkCosmeticsButtonPressed(mousePosF);
+        						if(selectedCosmetic!= 444)
+        						{
+        							windowDepth = windowDepth+6;	//equal 7
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
         			break;
 				}
         	}
-
-        window.clear(sf::Color::White);
-        window.draw(background);
-        window.draw(backdrop);
-        window.draw(produceButton.getButton());
-        window.draw(produceButton.getButtonName());
-        window.draw(meatsButton.getButton());
-        window.draw(meatsButton.getButtonName());
-        window.draw(grainsButton.getButton());
-        window.draw(grainsButton.getButtonName());
-        window.draw(dairyButton.getButton());
-        window.draw(dairyButton.getButtonName());
-        window.draw(drinksButton.getButton());
-        window.draw(drinksButton.getButtonName());
-        window.draw(deliButton.getButton());
-        window.draw(deliButton.getButtonName());
-        window.draw(box.getTextBox());
-        window.draw(box.getBoxText());
-        window.draw(bakeryButton.getButton());
-        window.draw(bakeryButton.getButtonName());
-        window.draw(cartButton.getButton());
-        window.draw(cartButton.getButtonName());
-        window.draw(customerName.getBoxText());
-        window.display();
+        if(windowDepth == 1)
+        {
+        	window.clear(sf::Color::White);
+        	window.draw(background);
+        	window.draw(backdrop);
+        	window.draw(produceButton.getButton());
+        	window.draw(produceButton.getButtonName());
+        	window.draw(meatsButton.getButton());
+        	window.draw(meatsButton.getButtonName());
+        	window.draw(grainsButton.getButton());
+        	window.draw(grainsButton.getButtonName());
+        	window.draw(dairyButton.getButton());
+        	window.draw(dairyButton.getButtonName());
+        	window.draw(drinksButton.getButton());
+        	window.draw(drinksButton.getButtonName());
+        	window.draw(deliButton.getButton());
+        	window.draw(deliButton.getButtonName());
+        	window.draw(box.getTextBox());
+        	window.draw(box.getBoxText());
+        	window.draw(bakeryButton.getButton());
+        	window.draw(bakeryButton.getButtonName());
+        	window.draw(cosmeticsButton.getButton());
+        	window.draw(cosmeticsButton.getButtonName());
+        	window.draw(cartButton.getButton());
+        	window.draw(cartButton.getButtonName());
+        	window.draw(customerName.getBoxText());
+        	window.display();
+        }
         }
 
     	}
@@ -1017,6 +1082,71 @@ int main()
     			window.display();
     		}
     	}
+
+    	//Cosmetics Frame
+    	if(windowDepth == 7)
+    	{
+    		TextBox cosmeticName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getCosmeticsItem(selectedCosmetic).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox cosmeticAisle = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Cosmetics"), 35, sf::Color::Black);
+    		TextBox cosmeticBrand = TextBox(sf::Vector2f(0.0f,95.0f), erasFont, appendStr("Brand: ", supermarket.getCosmeticsItem(selectedCosmetic).getBrand()), 35, sf::Color::Black);
+
+    		priceUnformatted = appendStr("Price: $",(std::to_string(supermarket.getCosmeticsItem(selectedCosmetic).getPrice())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox cosmeticPrice = TextBox(sf::Vector2f(0.0f,130.0f), erasFont, priceFormatted, 30, sf::Color::Black);
+
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getCosmeticsItem(selectedCosmetic).getPrice() , supermarket.getCosmeticsItem(selectedCosmetic).getName(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 6;
+    					}
+    					break;
+    	    		}
+
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 6;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(cosmetics);
+    			window.draw(cosmeticName.getBoxText());
+    			window.draw(cosmeticAisle.getBoxText());
+    			window.draw(cosmeticBrand.getBoxText());
+    			window.draw(cosmeticPrice.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
+
 
     	if(windowDepth == 37)
     	{
