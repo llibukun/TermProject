@@ -21,14 +21,15 @@
 #include "Meats.h"
 #include "Deli.h"
 #include "Drinks.h"
+#include "Bakery.h"
 
 class Store{
 	private:
 		std::vector<Produce> produceItems;
 		std::vector<Meats> meatItems;
 		std::vector<Deli> deliItems;
-
 		std::vector<Drinks> drinkItems;
+		std::vector<Bakery> bakeryItems;
 
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
@@ -75,6 +76,16 @@ class Store{
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Bakery Function Declarations
+		void addBakery(std::string name, double pricePerBox, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		void bakeryGrid();
+		int amountOfBakeryItems();
+		int checkBakeryButtonPressed(sf::Vector2f mousePosF);
+		Bakery getBakeryItem(int pos);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Cashier Function Declaration
 		void addToCart(double cost, std::string itemName, sf::Font &font);
@@ -83,6 +94,7 @@ class Store{
 		void organizeCartContents();
 		int getCartSize();
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 };
@@ -284,6 +296,56 @@ Drinks Store::getDrinksItem(int pos)
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Bakery Functions
+void Store::addBakery(std::string name, double pricePerBox, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+    bakeryItems.push_back(Bakery( name, pricePerBox,  dimensions, font, initText));
+}
+
+void Store::bakeryGrid()
+{
+    float x = 350.0f;
+    float y = 150.0f;
+    int cnt = 0;
+    for(int i = 0, max = bakeryItems.size(); i!=max; ++i )
+    {
+        bakeryItems.at(i).changeButtonPosition(x, y);
+        bakeryItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 4)
+        {
+            cnt = 0;
+            x = 350.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkBakeryButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = bakeryItems.size(); i!=max;++i)
+    {
+        if(bakeryItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfBakeryItems()
+{
+    return bakeryItems.size();
+}
+
+Bakery Store::getBakeryItem(int pos)
+{
+    return bakeryItems.at(pos);
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
