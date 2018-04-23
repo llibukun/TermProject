@@ -26,7 +26,7 @@
 #include "Hygiene.h"
 #include "Pharmacy.h"
 #include "Dairy.h"
-
+#include "Grains.h"
 class Store{
 	private:
 		std::vector<Produce> produceItems;
@@ -38,6 +38,7 @@ class Store{
 		std::vector<Hygiene> hygieneItems;
 		std::vector<Pharmacy> pharmacyItems;
 		std::vector<Dairy> dairyItems;
+		std::vector<Grains> grainsItems;
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
 
@@ -130,14 +131,24 @@ class Store{
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//Grains Function Declarations
+			void addGrains(std::string name, std::string brand, double price, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+			void grainsGrid();
+			int amountOfGrainsItems();
+			int checkGrainsButtonPressed(sf::Vector2f mousePosF);
+			Grains getGrainsItem(int pos);
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Cashier Function Declaration
-		void addToCart(double cost, std::string itemName, sf::Font &font);
-		double calculateCost();
-		sf::Text getCartItem(int pos);
-		void organizeCartContents();
-		int getCartSize();
+			void addToCart(double cost, std::string itemName, sf::Font &font);
+			double calculateCost();
+			sf::Text getCartItem(int pos);
+			void organizeCartContents();
+			int getCartSize();
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -589,6 +600,54 @@ Dairy Store::getDairyItem(int pos)
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Grains Functions
+void Store::addGrains(std::string name, std::string brand, double price, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+    grainsItems.push_back(Grains( name,  brand,  price,  dimensions, font, initText));
+}
+
+void Store::grainsGrid()
+{
+    float x = 110.0f;
+    float y = 160.0f;
+    int cnt = 0;
+    for(int i = 0, max = grainsItems.size(); i!=max; ++i )
+    {
+        grainsItems.at(i).changeButtonPosition(x, y);
+        grainsItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 5)
+        {
+            cnt = 0;
+            x = 110.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkGrainsButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = grainsItems.size(); i!=max;++i)
+    {
+        if(grainsItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfGrainsItems()
+{
+    return grainsItems.size();
+}
+
+Grains Store::getGrainsItem(int pos)
+{
+    return grainsItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

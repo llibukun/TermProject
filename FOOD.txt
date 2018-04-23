@@ -6,10 +6,22 @@ Produce Mango Fruit 1
 Produce Carrot Vegetable 0.50
 Produce Celery Vegetable 0.6
 Produce Walnuts Nut 3.56
+Produce Pineapple Fruit 1.75
+Produce Brocolli Vegetable 0.75
+Produce Grapes Fruit 1.85
+Meat Salmon Fish 1.75
+Meat Mahi_Mahi Fish 2.50
+Meat New_York_Strip Beef 3.50
+Meat Ground_Beef Beef 2.00
 Meat Churrasco Beef 3.00
 Meat Chicken Poultry 2.80
 Meat Ham Pork 1.00
 Meat Sirloin Beef 2.80
+Meat Ribs Beef 1.95
+Meat Fillet_Mignon Beef 4.50
+Meat Steak Beef 1.55
+Meat Mr.Djald's_Sausage Beef 1.00
+Meat Mr.Djald's_Sushi Fish 1.25
 Deli Ham 1.95 40.00
 Deli Mortadella 1.50 25.00
 Deli Salami 1.30 23.00
@@ -49,10 +61,10 @@ Bakery Bagels 4.99
 Bakery White_Bread 2.99
 Pharmacy Tylenol_50_Capsules 9.99
 Pharmacy Advil_50_Capsules 11.99
-Pharmacy Ibuprofen_100_Caps 12.50
+Pharmacy Ibuprofen_100_Capsules 12.50
 Pharmacy Emergen-C_10_Packs 8.55
 Pharmacy Benadryl_50_Capsules 12.55
-Pharmacy Chlor-trim_50_Caps 12.99
+Pharmacy Chlor-trimeton_50_Capsules 12.99
 Pharmacy Allegra_50_Capsules 13.99
 Pharmacy Zyrtec_75_Capsules 16.99
 Pharmacy Claritin_50_Capsules 14.99
