@@ -28,10 +28,6 @@ class Deli
     const std::string name; // Item name
     double pricePerLlb; // the price per pound
     double pricePerUnit; // the price per unit
-    //double quantity; // Quantity in store
-    //void updatePricePerLlb(double newPrice); // Change the Price per pound
-    //void updatePricePerUnit(double newPrice); // Change the Price per unit
-    //void decQuantity(double newQty); // Decrement the quantity in store
 
     sf::Text typeText;
     sf::Text pricePerLlbText;
@@ -58,87 +54,5 @@ class Deli
     //double getQuantity();
 
 };
-
-// CONSTRUCTOR
-Deli::Deli(std::string name, double pricePerLlb, double pricePerUnit, sf::Vector2f dimensions,  sf::Font &font, std::string initText):name(name)
-{
-    button.setSize(dimensions);
-    button.setOutlineThickness(5);
-    button.setOutlineColor(sf::Color::Black);
-
-    nameText.setFont(font);
-    nameText.setString(initText);
-    nameText.setCharacterSize(15);
-    nameText.setColor(sf::Color::Black);
-
-    this->pricePerLlb = pricePerLlb;
-    this->pricePerUnit = pricePerUnit;
-
-    this -> pricePerLlbText.setString( std::to_string(pricePerLlb) );
-    this -> pricePerUnitText.setString( std::to_string(pricePerUnit) );
-
-
-}
-
-void Deli::changeButtonPosition(float x, float y)
-{
-    button.setPosition(x, y);
-}
-
-std::string Deli::getButtonNameStr()
-{
-    return this -> nameText.getString().toAnsiString();
-}
-
-sf::RectangleShape Deli::getButton()
-{
-    return this -> button;
-}
-
-sf::Text Deli::getButtonName()
-{
-    return this -> nameText;
-}
-
-bool Deli::clicked(sf::Vector2f mousePosF)
-{
-    if(button.getGlobalBounds().contains(mousePosF))
-    {
-        return true;
-    }else{
-        return false;
-    }
-}
-
-
-
-void Deli::changeTextPosition(float x, float y)
-{
-    nameText.setPosition(x, y);
-}
-
-
-double Deli::getPricePerLlb()
-{
-    return this -> pricePerLlb;
-}
-
-double Deli::getPricePerUnit()
-{
-    return this -> pricePerUnit;
-}
-
-sf::Text Deli::getPPPText()						//get pricePerLlb value in sf::Text form
-{
-    return this ->pricePerLlbText;
-}
-
-sf::Text Deli::getPPUText()						//get pricePerLlb value in sf::Text form
-{
-    return this ->pricePerUnitText;
-}
-
-
-
 
 #endif /* DELI_H_ */

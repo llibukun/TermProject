@@ -1,10 +1,3 @@
-/*
- * Snacks.h
- *
- *  Created on: Apr 22, 2018
- *      Author: User
- */
-
 #ifndef SNACKS_H_
 #define SNACKS_H_
 
@@ -46,68 +39,5 @@ class Snacks
 		double getPrice();
 };
 
-Snacks::Snacks(std::string name, double price, sf::Vector2f dimensions,  sf::Font &font, std::string initText):name(name)
-{
-	button.setSize(dimensions);
-	button.setOutlineThickness(5);
-	button.setOutlineColor(sf::Color::Black);
-
-	nameText.setFont(font);
-	nameText.setString(initText);
-	nameText.setCharacterSize(15);
-	nameText.setColor(sf::Color::Black);
-
-	this -> price = price;
-}
-
-void Snacks::changeButtonPosition(float x, float y)
-{
-	button.setPosition(x, y);
-}
-
-std::string Snacks::getButtonNameStr()
-{
-	return this -> nameText.getString().toAnsiString();
-}
-
-sf::RectangleShape Snacks::getButton()
-{
-	return this -> button;
-}
-
-sf::Text Snacks::getButtonName()
-{
-	return this -> nameText;
-}
-
-bool Snacks::clicked(sf::Vector2f mousePosF)
-{
-	if(button.getGlobalBounds().contains(mousePosF))
-	{
-		return true;
-	}else{
-		return false;
-	}
-}
-
-void Snacks::changeTextPosition(float x, float y)
-{
-	nameText.setPosition(x, y);
-}
-
-double Snacks::getPrice()
-{
-	return this -> price;
-}
-
-std::string Snacks::getName()
-{
-	return this -> name;
-}
-
-sf::Text Snacks::getPriceText()						//get pricePerLlb value in sf::Text form
-{
-	return this ->priceText;
-}
 
 #endif /* SNACKS_H_ */
