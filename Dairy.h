@@ -1,10 +1,3 @@
-/*
- * Dairy.h
- *
- *  Created on: Apr 22, 2018
- *      Author: User
- */
-
 #ifndef DAIRY_H_
 #define DAIRY_H_
 #include <SFML/Window.hpp>

@@ -39,5 +39,4 @@ class Snacks
 		double getPrice();
 };
 
-
 #endif /* SNACKS_H_ */

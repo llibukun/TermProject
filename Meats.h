@@ -1,10 +1,3 @@
-/*
- * Meats.h
- *
- *  Created on: Apr 22, 2018
- *      Author: User
- */
-
 #ifndef MEATS_H_
 #define MEATS_H_
 

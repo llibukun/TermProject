@@ -1,8 +1,3 @@
-// Pharmacy.h - Pharmacy Aisle Header File
-// Author: David Espantoso
-// COP3503 Final Project: Mr. Djald's Supermarket
-// Due: Monday, April 23rd, 2018.
-
 #ifndef PHARMACY_H_
 #define PHARMACY_H_
 
@@ -41,6 +36,5 @@ class Pharmacy
 
 	double getPricePerCapsules();
 };
-
 
 #endif /* PHARMACY_H_ */

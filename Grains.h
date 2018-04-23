@@ -36,5 +36,4 @@ public:
     double getPrice();
 };
 
-
 #endif /* GRAINS_H_ */

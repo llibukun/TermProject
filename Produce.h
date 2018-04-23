@@ -1,10 +1,3 @@
-/*
- * Produce.h
- *
- *  Created on: Apr 22, 2018
- *      Author: User
- */
-
 #ifndef PRODUCE_H_
 #define PRODUCE_H_
 

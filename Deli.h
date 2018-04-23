@@ -1,10 +1,3 @@
-/*
- * Deli.h
- *
- *  Created on: Apr 22, 2018
- *      Author: Robert
- */
-
 #ifndef DELI_H_
 #define DELI_H_
 
@@ -54,5 +47,4 @@ class Deli
     //double getQuantity();
 
 };
-
 #endif /* DELI_H_ */
