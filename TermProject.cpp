@@ -12,7 +12,7 @@
 #include "Store.h"
 #include "TextBox.h"
 #include "Button.h"
-#include "Produce.h"
+
 sf::RenderWindow window(sf::VideoMode(1200, 800), "Mr. Djald's Supermarket", sf::Style::Close^sf::Style::Titlebar);
 sf::Font font;
 sf::Font erasFont;
@@ -57,6 +57,18 @@ sf::Texture snacksTexture;
 sf::Texture deliTexture;
 sf::Texture hygieneTexture;
 sf::Texture exitTexture;
+
+sf::Texture produceAisleTexture;
+sf::Texture meatsAisleTexture;
+sf::Texture drinksAisleTexture;
+sf::Texture pharmacyAisleTexture;
+sf::Texture grainsAisleTexture;
+sf::Texture cosmeticsAisleTexture;
+sf::Texture dairyAisleTexture;
+sf::Texture bakeryAisleTexture;
+sf::Texture snacksAisleTexture;
+sf::Texture deliAisleTexture;
+sf::Texture hygieneAisleTexture;
 
 std::string appendStr(std::string str1, std::string str2);
 
@@ -272,6 +284,108 @@ int main()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+	    if (!produceAisleTexture.loadFromFile("Images/Aisles/Produce.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            return 0;
+	        }
+
+	        if (!meatsAisleTexture.loadFromFile("Images/Aisles/Meats.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!drinksAisleTexture.loadFromFile("Images/Aisles/Drinks.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!pharmacyAisleTexture.loadFromFile("Images/Aisles/Pharmacy.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!grainsAisleTexture.loadFromFile("Images/Aisles/Grains.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!cosmeticsAisleTexture.loadFromFile("Images/Aisles/Cosmetics.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!dairyAisleTexture.loadFromFile("Images/Aisles/Dairy.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!bakeryAisleTexture.loadFromFile("Images/Aisles/Bakery.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!snacksAisleTexture.loadFromFile("Images/Aisles/Snacks.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!deliAisleTexture.loadFromFile("Images/Aisles/Deli.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+	        if (!hygieneAisleTexture.loadFromFile("Images/Aisles/Hygiene.png"))
+	        {
+	            std::cout<<"Load failed"<<std::endl;
+	            system("pause");
+	        }
+
+
+	        sf::Sprite produceAisles;
+	        produceAisles.setTexture(produceAisleTexture);
+
+	        sf::Sprite meatsAisles;
+	        meatsAisles.setTexture(meatsAisleTexture);
+
+	        sf::Sprite pharmacyAisles;
+	        pharmacyAisles.setTexture(pharmacyAisleTexture);
+
+	        sf::Sprite cosmeticsAisles;
+	        cosmeticsAisles.setTexture(cosmeticsAisleTexture);
+
+	        sf::Sprite deliAisles;
+	        deliAisles.setTexture(deliAisleTexture);
+
+	        sf::Sprite bakeryAisles;
+	        bakeryAisles.setTexture(bakeryAisleTexture);
+
+	        sf::Sprite grainsAisles;
+	        grainsAisles.setTexture(grainsAisleTexture);
+
+	        sf::Sprite hygieneAisles;
+	        hygieneAisles.setTexture(hygieneAisleTexture);
+
+	        sf::Sprite dairyAisles;
+	        dairyAisles.setTexture(dairyAisleTexture);
+
+	        sf::Sprite snacksAisles;
+	        snacksAisles.setTexture(snacksAisleTexture);
+
+	        sf::Sprite drinksAisles;
+	        drinksAisles.setTexture(drinksAisleTexture);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	TextBox nameBox = TextBox(sf::Vector2f(400,50), sf::Vector2f(window.getSize().x/2 - 400/2, 700.0f) ,5, font, "Enter Full Name");
 	TextBox box = TextBox(sf::Vector2f(400,50), sf::Vector2f(window.getSize().x/2 - 400/2, 6.0f) ,5, font, "Search");
@@ -417,8 +531,8 @@ int main()
 
      					    //Draw all the buttons
         			        window.clear(sf::Color::White);
-                            window.draw(background);
-        					window.draw(customerName.getBoxText());
+                            window.draw(produceAisles);
+
 
         			        for(int i = 0, max = supermarket.amountOfProduceItems(); i!=max;++i)
         			        {
@@ -462,9 +576,8 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
+                            window.draw(meatsAisles);
 
-        					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfMeatItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getMeatItem(i).getButton());
@@ -505,9 +618,8 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
+                            window.draw(deliAisles);
 
-        					window.draw(customerName.getBoxText());
         					for(int i = 0, max = supermarket.amountOfDeliItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getDeliItem(i).getButton());
@@ -548,9 +660,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-
-        					window.draw(customerName.getBoxText());
+        					window.draw(drinksAisles);
         					for(int i = 0, max = supermarket.amountOfDrinksItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getDrinksItem(i).getButton());
@@ -591,9 +701,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-
-        					window.draw(customerName.getBoxText());
+        					window.draw(bakeryAisles);
         					for(int i = 0, max = supermarket.amountOfBakeryItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getBakeryItem(i).getButton());
@@ -634,9 +742,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-
-        					window.draw(customerName.getBoxText());
+        					window.draw(cosmeticsAisles);
         					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getCosmeticsItem(i).getButton());
@@ -677,9 +783,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-
-        					window.draw(customerName.getBoxText());
+        					window.draw(hygieneAisles);
         					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getHygieneItem(i).getButton());
@@ -720,8 +824,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-        					window.draw(customerName.getBoxText());
+        					window.draw(pharmacyAisles);
 
         					for(int i = 0, max = supermarket.amountOfPharmacyItems(); i!=max;++i)
         					{
@@ -763,8 +866,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-        					window.draw(customerName.getBoxText());
+        					window.draw(dairyAisles);
 
         					for(int i = 0, max = supermarket.amountOfDairyItems(); i!=max;++i)
         					{
@@ -805,8 +907,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-        					window.draw(customerName.getBoxText());
+        					window.draw(grainsAisles);
 
         					for(int i = 0, max = supermarket.amountOfGrainsItems(); i!=max;++i)
         					{
@@ -847,8 +948,7 @@ int main()
 
         					//Draw all the buttons
         					window.clear(sf::Color::White);
-        					window.draw(background);
-        					window.draw(customerName.getBoxText());
+        					window.draw(snacksAisles);
 
         					for(int i = 0, max = supermarket.amountOfSnacksItems(); i!=max;++i)
         					{
