@@ -401,10 +401,11 @@ int main()
 	Button hygieneButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 541.0f), font, "Hygiene", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button pharmacyButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 608.0f), font, "Pharmacy", 5, 25, sf::Color::Black, sf::Color::Black);
 	Button snacksButton = Button(sf::Vector2f(200, 57), sf::Vector2f(5.0f, 675.0f), font, "Snacks", 5, 25, sf::Color::Black, sf::Color::Black);
-	Button cartButton = Button(sf::Vector2f(125.0f, 45.0f), sf::Vector2f(1080.0f, 20.0f) , font, "Checkout", 9, 22, sf::Color::Black, sf::Color::Red);
 
-	Button addToCart = Button(sf::Vector2f(150.0f, 50.0f), sf::Vector2f(600.0f, 100.0f) , font, "Add to Cart", 3, 25, sf::Color::Black, sf::Color::Black);
-	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1095.0f, 20.0f) , font, "MENU", 9, 22, sf::Color::Black, sf::Color::Red);
+	Button goBack = Button(sf::Vector2f(100, 45), sf::Vector2f(1090.0f, 10.0f), font, "Go Back", 9, 22, sf::Color::Black, sf::Color::Red);
+	Button cartButton = Button(sf::Vector2f(125.0f, 45.0f), sf::Vector2f(1065.0f, 10.0f) , font, "Checkout", 9, 22, sf::Color::Black, sf::Color::Red);
+	Button addToCart = Button(sf::Vector2f(150.0f, 50.0f), sf::Vector2f(1045.0f, 100.0f) , font, "Add to Cart", 3, 25, sf::Color::Black, sf::Color::Black);
+	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1090.0f, 10.0f) , font, "MENU", 9, 22, sf::Color::Black, sf::Color::Red);
 
 	TextBox customerName;
     while (window.isOpen())
@@ -451,7 +452,7 @@ int main()
     							if(event.text.unicode == 13)	//Must have a particular action be a break statement (<enter> key)
     							{
     								std::cout<<nameBox.getBoxTextStr()<<std::endl;
-    								customerName = TextBox(sf::Vector2f(800.0f, 720.0f), erasFont, appendStr("Welcome ", nameBox.getBoxTextStr()), 30, sf::Color::Blue);
+    								customerName = TextBox(sf::Vector2f(550.0f, 720.0f), erasFont, appendStr("Welcome ", nameBox.getBoxTextStr()), 27, sf::Color::Blue);
     								windowDepth++;
     								std::cout<<windowDepth<<std::endl;
     								break;
@@ -487,8 +488,9 @@ int main()
 				{
         			if ( box.clicked( mousePosF) )	//detect if an object of TextBox was clicked
         			{
-        				std::cout << "Clicked textBox" << std::endl;
+        				std::cout << "Clicked SearchBox" << std::endl;
         				window.clear(sf::Color::White);
+        				window.draw(background);
         				window.draw(box.getTextBox());
         				window.draw(box.getBoxText());
         				window.display();
@@ -498,6 +500,7 @@ int main()
         					{
         						box.textEntered(event.text.unicode);
         						window.clear(sf::Color::White);
+        						window.draw(background);
         						window.draw(box.getTextBox());
         						window.draw(box.getBoxText());
         						window.display();
@@ -532,7 +535,8 @@ int main()
      					    //Draw all the buttons
         			        window.clear(sf::Color::White);
                             window.draw(produceAisles);
-
+                            window.draw(goBack.getButton());
+                            window.draw(goBack.getButtonName());
 
         			        for(int i = 0, max = supermarket.amountOfProduceItems(); i!=max;++i)
         			        {
@@ -548,7 +552,6 @@ int main()
         					}
         					if(event.type == sf::Event::MouseButtonPressed)
         					{
-        						std::cout<<supermarket.getProduceItem(0).getName()<<std::endl;
 
         						selectedProduce = supermarket.checkProduceButtonPressed(mousePosF);
         						if(selectedProduce != 444)
@@ -556,6 +559,8 @@ int main()
         							windowDepth++;
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
 
         					}
@@ -577,7 +582,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
                             window.draw(meatsAisles);
-
+                            window.draw(goBack.getButton());
+                            window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfMeatItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getMeatItem(i).getButton());
@@ -598,6 +604,8 @@ int main()
         							windowDepth = windowDepth+2;	//equal 3
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
 
         					}
@@ -619,7 +627,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
                             window.draw(deliAisles);
-
+                            window.draw(goBack.getButton());
+                            window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfDeliItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getDeliItem(i).getButton());
@@ -640,6 +649,8 @@ int main()
         							windowDepth = windowDepth+3;	//equal 4
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
 
         					}
@@ -661,6 +672,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(drinksAisles);
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfDrinksItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getDrinksItem(i).getButton());
@@ -681,6 +694,8 @@ int main()
         							windowDepth = windowDepth+4;	//equal 5
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
 
         					}
@@ -702,6 +717,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(bakeryAisles);
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfBakeryItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getBakeryItem(i).getButton());
@@ -722,8 +739,9 @@ int main()
         							windowDepth = windowDepth+5;	//equal 6
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
@@ -743,6 +761,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(cosmeticsAisles);
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getCosmeticsItem(i).getButton());
@@ -763,8 +783,9 @@ int main()
         							windowDepth = windowDepth+6;	//equal 7
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
@@ -784,6 +805,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(hygieneAisles);
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfCosmeticsItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getHygieneItem(i).getButton());
@@ -804,8 +827,9 @@ int main()
         							windowDepth = windowDepth+7;	//equal 8
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
@@ -825,7 +849,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(pharmacyAisles);
-
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfPharmacyItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getPharmacyItem(i).getButton());
@@ -846,13 +871,13 @@ int main()
         							windowDepth = windowDepth+8;	//equal 9
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
         				}
-
         			}
         			if(dairyButton.clicked(mousePosF))
         			{
@@ -867,7 +892,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(dairyAisles);
-
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfDairyItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getDairyItem(i).getButton());
@@ -887,8 +913,9 @@ int main()
         						{
         							windowDepth = windowDepth+9;	//equal 10
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
@@ -908,7 +935,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(grainsAisles);
-
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfGrainsItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getGrainsItem(i).getButton());
@@ -928,8 +956,9 @@ int main()
         						{
         							windowDepth = windowDepth+10;	//equal 11
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;
@@ -949,7 +978,8 @@ int main()
         					//Draw all the buttons
         					window.clear(sf::Color::White);
         					window.draw(snacksAisles);
-
+        					window.draw(goBack.getButton());
+        					window.draw(goBack.getButtonName());
         					for(int i = 0, max = supermarket.amountOfSnacksItems(); i!=max;++i)
         					{
         						window.draw(supermarket.getSnacksItem(i).getButton());
@@ -969,8 +999,9 @@ int main()
         						{
         							windowDepth = windowDepth+11;	//equal 12
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
+        						}else if(goBack.clicked(mousePosF)){
+        							break;
         						}
-
         					}
         					if(windowDepth != 1)
         						break;

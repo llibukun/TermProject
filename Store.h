@@ -159,9 +159,6 @@ class Store{
 			void organizeCartContents();
 			int getCartSize();
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 };
 
 Store::Store(){
@@ -541,7 +538,7 @@ void Store::pharmacyGrid()
 
 int Store::checkPharmacyButtonPressed(sf::Vector2f mousePosF)
 {
-    for(int i = 0, max = deliItems.size(); i!=max;++i)
+    for(int i = 0, max = pharmacyItems.size(); i!=max;++i)
     {
         if(pharmacyItems.at(i).clicked(mousePosF))
             return i;

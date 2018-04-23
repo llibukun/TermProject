@@ -98,7 +98,7 @@ bool TextBox::clicked(sf::Vector2f mousePosF)
 
 void TextBox::textEntered(sf::Uint32 unicode)
 {
-	if(unicode<123 && unicode > 31 && (boxText.getLocalBounds().width < textBox.getLocalBounds().width - 15))	//Take in characters
+	if(unicode<123 && unicode > 31 && (boxText.getLocalBounds().width < textBox.getLocalBounds().width - 25))	//Take in characters
 	{
 		boxInput += unicode;
 		boxText.setString(boxInput);
