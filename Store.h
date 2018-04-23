@@ -25,6 +25,8 @@
 #include "Cosmetics.h"
 #include "Hygiene.h"
 #include "Pharmacy.h"
+#include "Dairy.h"
+
 class Store{
 	private:
 		std::vector<Produce> produceItems;
@@ -35,8 +37,10 @@ class Store{
 		std::vector<Cosmetics> cosmeticsItems;
 		std::vector<Hygiene> hygieneItems;
 		std::vector<Pharmacy> pharmacyItems;
+		std::vector<Dairy> dairyItems;
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
+
 
 	public:
 		Store();
@@ -97,6 +101,15 @@ class Store{
 		        int checkCosmeticsButtonPressed(sf::Vector2f mousePosF);
 		        Cosmetics getCosmeticsItem(int pos);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Dairy Function Declarations
+		        void addDairy(std::string name, std::string brand, double price, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		        void dairyGrid();
+		        int amountOfDairyItems();
+		        int checkDairyButtonPressed(sf::Vector2f mousePosF);
+		        Dairy getDairyItem(int pos);
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Hygiene Function Declarations
@@ -192,8 +205,8 @@ void Store::addMeat(std::string name, std::string type, double pricePerLlb, sf::
 
 void Store::meatGrid()
 {
-		float x = 350.0f;
-		float y = 150.0f;
+		float x = 110.0f;
+		float y = 160.0f;
 		int cnt = 0;
 		for(int i = 0, max = meatItems.size(); i!=max; ++i )
 		{
@@ -202,10 +215,10 @@ void Store::meatGrid()
 			x+=200.0f;
 			cnt++;
 
-			if(cnt == 4)
+			if(cnt == 5)
 			{
 				cnt = 0;
-				x = 350.0f;
+				x = 110.0f;
 				y += 100.0f;
 			}
 		}
@@ -241,8 +254,8 @@ void Store::addDeli(std::string name, double pricePerLlb,  double pricePerUnit, 
 
 void Store::deliGrid()
 {
-    float x = 350.0f;
-    float y = 150.0f;
+    float x = 110.0f;
+    float y = 160.0f;
     int cnt = 0;
     for(int i = 0, max = deliItems.size(); i!=max; ++i )
     {
@@ -251,10 +264,10 @@ void Store::deliGrid()
         x+=200.0f;
         cnt++;
 
-        if(cnt == 4)
+        if(cnt == 5)
         {
             cnt = 0;
-            x = 350.0f;
+            x = 110.0f;
             y += 100.0f;
         }
     }
@@ -289,8 +302,8 @@ void Store::addDrinks(std::string name, std::string category, double pricePerCon
 }
 void Store::drinksGrid()
 {
-	float x = 350.0f;
-	float y = 150.0f;
+	float x = 110.0f;
+	float y = 160.0f;
 	int cnt = 0;
 	for(int i = 0, max = drinkItems.size(); i!=max; ++i )
 	{
@@ -299,10 +312,10 @@ void Store::drinksGrid()
 		x+=200.0f;
 		cnt++;
 
-		if(cnt == 4)
+		if(cnt == 5)
 		{
 			cnt = 0;
-			x = 350.0f;
+			x = 110.0f;
 			y += 100.0f;
 		}
 	}
@@ -339,8 +352,8 @@ void Store::addBakery(std::string name, double pricePerBox, sf::Vector2f dimensi
 
 void Store::bakeryGrid()
 {
-    float x = 350.0f;
-    float y = 150.0f;
+    float x = 110.0f;
+    float y = 160.0f;
     int cnt = 0;
     for(int i = 0, max = bakeryItems.size(); i!=max; ++i )
     {
@@ -349,10 +362,10 @@ void Store::bakeryGrid()
         x+=200.0f;
         cnt++;
 
-        if(cnt == 4)
+        if(cnt == 5)
         {
             cnt = 0;
-            x = 350.0f;
+            x = 110.0f;
             y += 100.0f;
         }
     }
@@ -388,8 +401,8 @@ void Store::addCosmetics(std::string name, std::string brand, double price, sf::
 
 void Store::cosmeticsGrid()
 {
-    float x = 350.0f;
-    float y = 150.0f;
+    float x = 110.0f;
+    float y = 160.0f;
     int cnt = 0;
     for(int i = 0, max = cosmeticsItems.size(); i!=max; ++i )
     {
@@ -398,10 +411,10 @@ void Store::cosmeticsGrid()
         x+=200.0f;
         cnt++;
 
-        if(cnt == 4)
+        if(cnt == 5)
         {
             cnt = 0;
-            x = 350.0f;
+            x = 110.0f;
             y += 100.0f;
         }
     }
@@ -438,8 +451,8 @@ void Store::addHygiene(std::string name, double pricePerUnit, sf::Vector2f dimen
 
 void Store::hygieneGrid()
 {
-	float x = 350.0f;
-	float y = 150.0f;
+	float x = 110.0f;
+	float y = 160.0f;
 	int cnt = 0;
 	for(int i = 0, max = hygieneItems.size(); i!=max; ++i )
 	{
@@ -448,10 +461,10 @@ void Store::hygieneGrid()
 		x+=200.0f;
 		cnt++;
 
-		if(cnt == 4)
+		if(cnt == 5)
 		{
 			cnt = 0;
-			x = 350.0f;
+			x = 110.0f;
 			y += 100.0f;
 		}
 	}
@@ -487,8 +500,8 @@ void Store::addPharmacy(std::string name, double pricePerCapsules, sf::Vector2f 
 
 void Store::pharmacyGrid()
 {
-    float x = 350.0f;
-    float y = 150.0f;
+    float x = 110.0f;
+    float y = 160.0f;
     int cnt = 0;
     for(int i = 0, max = pharmacyItems.size(); i!=max; ++i )
     {
@@ -497,10 +510,10 @@ void Store::pharmacyGrid()
         x+=200.0f;
         cnt++;
 
-        if(cnt == 4)
+        if(cnt == 5)
         {
             cnt = 0;
-            x = 350.0f;
+            x = 110.0f;
             y += 100.0f;
         }
     }
@@ -526,6 +539,57 @@ Pharmacy Store::getPharmacyItem(int pos)
     return pharmacyItems.at(pos);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Dairy Function Declarations
+void Store::addDairy(std::string name, std::string brand, double price, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+    dairyItems.push_back(Dairy( name,  brand,  price,  dimensions, font, initText));
+}
+
+void Store::dairyGrid()
+{
+    float x = 110.0f;
+    float y = 160.0f;
+    int cnt = 0;
+    for(int i = 0, max = dairyItems.size(); i!=max; ++i )
+    {
+        dairyItems.at(i).changeButtonPosition(x, y);
+        dairyItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 5)
+        {
+            cnt = 0;
+            x = 110.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkDairyButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = dairyItems.size(); i!=max;++i)
+    {
+        if(dairyItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfDairyItems()
+{
+    return dairyItems.size();
+}
+
+Dairy Store::getDairyItem(int pos)
+{
+    return dairyItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Cashier Functions
@@ -562,6 +626,12 @@ void Store::organizeCartContents()
 		{
 			cartItems.at(i).setPosition(x, y);
 			y+=40.0f;
+			cnt++;
+			if(cnt == 9)
+			{
+				x+= 400;
+				y = 150.0f;
+			}
 		}
 }
 

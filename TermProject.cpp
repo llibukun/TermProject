@@ -32,6 +32,7 @@ int selectedBakery;
 int selectedCosmetic;
 int selectedHygiene;
 int selectedPharmacy;
+int selectedDairy;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -99,7 +100,10 @@ int main()
 			supermarket.addHygiene(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}else if (lineVec.at(0).compare("Pharmacy")==0){
 			supermarket.addPharmacy(lineVec.at(1), stod(lineVec.at(2)), sf::Vector2f(150,30), font, lineVec.at(1));
+		}else if (lineVec.at(0).compare("Dairy")==0 ){
+			supermarket.addDairy( lineVec.at(1), lineVec.at(2), stod(lineVec.at(3)), sf::Vector2f(150,30), font, lineVec.at(1));
 		}
+
 		lineVec.clear();
 	}
 		productDataFile.close();	//Closes the stream of productDataFile when the eof has been reached.
@@ -240,7 +244,7 @@ int main()
 	    cosmetics.setTexture(cosmeticsTexture);
 
 	    sf::Sprite dairy;
-	    dairy.scale(0.7,0.7);
+	    dairy.scale(1.2,1.2);
 	    dairy.setPosition(window.getSize().x/2 - 230.0f, 450.0f);
 	    dairy.setTexture(dairyTexture);
 
@@ -734,6 +738,48 @@ int main()
         							windowDepth = windowDepth+8;	//equal 9
         							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         							std::cout<<"yep"<<std::endl;
+        						}
+
+        					}
+        					if(windowDepth != 1)
+        						break;
+        				}
+
+        			}
+        			if(dairyButton.clicked(mousePosF))
+        			{
+        				std::cout<<"Dairy Button Clicked"<<std::endl;
+        				while(window.waitEvent(event))
+        				{
+        					mousePos = sf::Mouse::getPosition( window );
+        					sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+
+        					supermarket.dairyGrid(); //creates produce items grid (sets locations for buttons)
+
+        					//Draw all the buttons
+        					window.clear(sf::Color::White);
+        					window.draw(background);
+        					window.draw(customerName.getBoxText());
+
+        					for(int i = 0, max = supermarket.amountOfDairyItems(); i!=max;++i)
+        					{
+        						window.draw(supermarket.getDairyItem(i).getButton());
+        						window.draw(supermarket.getDairyItem(i).getButtonName());///////////////////////////////////////////////////////////////////////////
+        					}
+
+        					window.display();
+        					if(event.type == sf::Event::KeyPressed)
+        					{
+        						if(event.key.code == sf::Keyboard::M)
+        							break;
+        					}
+        					if(event.type == sf::Event::MouseButtonPressed)
+        					{
+        						selectedDairy = supermarket.checkDairyButtonPressed(mousePosF);
+        						if(selectedDairy!= 444)
+        						{
+        							windowDepth = windowDepth+9;	//equal 10
+        							std::cout<<"windowDepth: "<<windowDepth<<std::endl;
         						}
 
         					}
@@ -1279,6 +1325,67 @@ int main()
     		}
     	}
 
+    	if(windowDepth == 10)
+    	{
+    		TextBox dairyName = TextBox(sf::Vector2f(0.0f,0.0f), erasFont, appendStr("Name: ",(supermarket.getDairyItem(selectedDairy).getButtonNameStr())), 50, sf::Color::Black);
+    		TextBox dairyAisle = TextBox(sf::Vector2f(0.0f,60.0f), erasFont, appendStr("Aisle: ","Dairy"), 35, sf::Color::Black);
+    		TextBox dairyBrand = TextBox(sf::Vector2f(0.0f,90.0f), erasFont, appendStr("Brand: ", (supermarket.getDairyItem(selectedDairy).getBrand())), 35, sf::Color::Black);
+    		priceUnformatted = appendStr("Price: $",(std::to_string( supermarket.getDairyItem(selectedDairy).getPrice())));
+    		characterPos = priceUnformatted.find(".");
+    		priceFormatted = priceUnformatted.erase(characterPos+3);
+    		TextBox dairyPrice = TextBox(sf::Vector2f(0.0f,130.0f), erasFont, priceFormatted, 30, sf::Color::Black);
+
+    		while(window.pollEvent(event) )
+    		{
+    			std::cout<< "Mouse Pos X: "<<mousePosF.x <<std::endl;
+    			std::cout<< "Mouse Pos Y: " <<mousePosF.y <<std::endl;
+    			switch(event.type)
+    			{
+    				case(sf::Event::Closed):
+    	    		{
+    					window.close();
+    					break;
+    	    		}
+    				case(sf::Event::MouseButtonPressed):
+    	    		{
+    					if(addToCart.clicked(mousePosF))
+    					{
+    						supermarket.addToCart(supermarket.getDairyItem(selectedDairy).getPrice(), supermarket.getDairyItem(selectedDairy).getName(), font);
+    					}
+
+    					if(backButton.clicked(mousePosF))
+    					{
+    						windowDepth = windowDepth - 9;
+    					}
+    					break;
+    	    		}
+
+
+    				case(sf::Event::KeyPressed):		//Go back to menu
+    	    	    {
+    					if(event.key.code == sf::Keyboard::M)
+    						windowDepth = windowDepth - 9;
+    					break;
+    	    	    }
+    				default:
+    					break;
+    			}
+
+    			window.clear(sf::Color::White);
+    			window.draw(background);
+    			window.draw(dairy);
+    			window.draw(dairyName.getBoxText());
+    			window.draw(dairyAisle.getBoxText());
+    			window.draw(dairyBrand.getBoxText());
+    			window.draw(dairyPrice.getBoxText());
+    			window.draw(addToCart.getButton());
+    			window.draw(addToCart.getButtonName());
+    			window.draw(backButton.getButton());
+    			window.draw(backButton.getButtonName());
+
+    			window.display();
+    		}
+    	}
 
     	if(windowDepth == 37)
     	{
