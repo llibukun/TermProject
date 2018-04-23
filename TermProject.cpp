@@ -35,6 +35,7 @@ int selectedPharmacy;
 int selectedDairy;
 int selectedGrains;
 int selectedSnacks;
+int searchFlag = 0;
 int windowDepth = 0;
 
 std::string priceUnformatted;
@@ -407,6 +408,10 @@ int main()
 	Button addToCart = Button(sf::Vector2f(150.0f, 50.0f), sf::Vector2f(1045.0f, 100.0f) , font, "Add to Cart", 3, 25, sf::Color::Black, sf::Color::Black);
 	Button backButton = Button(sf::Vector2f(100.0f, 45.0f), sf::Vector2f(1090.0f, 10.0f) , font, "MENU", 9, 22, sf::Color::Black, sf::Color::Red);
 
+	TextBox success = TextBox(sf::Vector2f(810.0f, 10.0f) , font, "Found Item", 30, sf::Color::Magenta);
+	TextBox failure = TextBox(sf::Vector2f(810.0f, 10.0f) , font, "Item Not Found", 30, sf::Color::Red);
+
+
 	TextBox customerName;
     while (window.isOpen())
     {
@@ -494,6 +499,7 @@ int main()
         				window.draw(box.getTextBox());
         				window.draw(box.getBoxText());
         				window.display();
+        				std::cout<<box.getBoxTextStr()<<std::endl;
         				while(window.waitEvent(event))
         				{
         					if(event.type == sf::Event::TextEntered)
@@ -506,13 +512,21 @@ int main()
         						window.display();
         						if(event.text.unicode == 13)	//Must have a particular action be a break statement (<enter> key)
         						{
+        							if(supermarket.searchEngine(box.getBoxTextStr()))
+        								searchFlag = 1;
+        							else
+        								searchFlag = 2;
+
+        							break;
+        							/*
         							std::cout<<box.getBoxTextStr()<<std::endl;
+
         							for(int i = 0, max = names.size(); i<max; ++i)
 									{
         								if(box.getBoxTextStr().compare(names.at(i)) == 0)
         									std::cout<<"found person" << std::endl;
 									}
-        							break;
+        							break;*/
         						}
         					}
         				}
@@ -1015,6 +1029,10 @@ int main()
         	window.clear(sf::Color::White);
         	window.draw(background);
         	window.draw(backdrop);
+        	if(searchFlag == 1)
+        		window.draw(success.getBoxText());
+        	if(searchFlag == 2)
+        	window.draw(failure.getBoxText());
         	window.draw(produceButton.getButton());
         	window.draw(produceButton.getButtonName());
         	window.draw(meatsButton.getButton());

@@ -106,13 +106,13 @@ void TextBox::textEntered(sf::Uint32 unicode)
 	}
 	if(unicode == 8)
 	{
+		boxTextStr = boxText.getString().toAnsiString();
 		if(boxTextStr.size() > 0)
 		 {
-
-		boxTextStr = boxText.getString().toAnsiString();
-		boxTextStr.pop_back();
-		boxText.setString(boxTextStr);
-		boxInput.erase(boxInput.getSize()-1, 1);
+			boxTextStr = boxText.getString().toAnsiString();
+			boxTextStr.pop_back();
+			boxText.setString(boxTextStr);
+			boxInput.erase(boxInput.getSize()-1, 1);
 		 }
 	}
 	if(unicode == 13)
@@ -121,7 +121,6 @@ void TextBox::textEntered(sf::Uint32 unicode)
 	}
 
 }
-
 
 
 #endif /* TEXTBOX_H_ */

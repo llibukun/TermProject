@@ -48,6 +48,8 @@ class Store{
 	public:
 		Store();
 
+		bool searchEngine(std::string item);
+
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Produce Function Declarations
 		void addProduce(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
@@ -163,6 +165,70 @@ class Store{
 
 Store::Store(){
 }
+
+bool Store::searchEngine(std::string item)
+{
+	for(int i = 0, max = produceItems.size(); i!=max; ++i)
+	{
+		if(item.compare( produceItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = meatItems.size(); i!=max; ++i)
+	{
+		if(item.compare( meatItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = deliItems.size(); i!=max; ++i)
+	{
+		if(item.compare( deliItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = drinkItems.size(); i!=max; ++i)
+	{
+		if(item.compare( drinkItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = bakeryItems.size(); i!=max; ++i)
+	{
+		if(item.compare( bakeryItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = cosmeticsItems.size(); i!=max; ++i)
+	{
+		if(item.compare( cosmeticsItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = dairyItems.size(); i!=max; ++i)
+	{
+		if(item.compare( dairyItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = grainsItems.size(); i!=max; ++i)
+	{
+		if(item.compare( grainsItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = hygieneItems.size(); i!=max; ++i)
+	{
+		if(item.compare( hygieneItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = pharmacyItems.size(); i!=max; ++i)
+	{
+		if(item.compare( pharmacyItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+	for(int i = 0, max = snacksItems.size(); i!=max; ++i)
+	{
+		if(item.compare( snacksItems.at(i).getButtonNameStr()) == 0 )
+			return true;
+	}
+
+
+
+	return false;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Produce Functions
 void Store::addProduce(std::string name, std::string type, double pricePerLlb, sf::Vector2f dimensions, sf::Font &font, std::string initText)
