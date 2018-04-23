@@ -38,7 +38,6 @@ Deli Mozzarella_Cheese 0.90 20.00
 Deli Blue_Cheese 1.20 21.99
 Bakery Chocolate_Cakes 15.00
 Bakery Vanilla_Cakes 15.00
-Bakery Special_Cakes 30.00
 Bakery Pastelitos 8.99
 Bakery Donuts 7.99
 Bakery Apple_Pie 7.99
@@ -53,10 +52,8 @@ Bakery Cuban_Capuchino 11.99
 Bakery Vanilla_Cupcakes 6.99
 Bakery Chocolate_Cupcakes 6.99
 Bakery Red_Velvet_Cupcakes 7.99
-Bakery Mixed_Cupcakes 9.99
 Bakery Muffins 5.99
 Bakery Croissant 9.99
-Bakery Pita_Bread 9.99
 Bakery Bagels 4.99
 Bakery White_Bread 2.99
 Pharmacy Tylenol_50_Capsules 9.99
@@ -70,7 +67,7 @@ Pharmacy Zyrtec_75_Capsules 16.99
 Pharmacy Claritin_50_Capsules 14.99
 Pharmacy DayQuil_75_Capsules 13.99
 Pharmacy NyQuil_50_Capsules 14.99
-Snacks Tostitos_Partybag_Chips 8.55
+Snacks Tostitos_Partybag 8.55
 Snacks Doritos_Partybag 12.99
 Snacks Lays_Partybag 10.99
 Snacks Mr.Djald's_Pretzels 8.99

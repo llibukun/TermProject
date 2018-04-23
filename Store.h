@@ -27,6 +27,8 @@
 #include "Pharmacy.h"
 #include "Dairy.h"
 #include "Grains.h"
+#include "Snacks.h"
+
 class Store{
 	private:
 		std::vector<Produce> produceItems;
@@ -39,9 +41,9 @@ class Store{
 		std::vector<Pharmacy> pharmacyItems;
 		std::vector<Dairy> dairyItems;
 		std::vector<Grains> grainsItems;
+		std::vector<Snacks> snacksItems;
 		std::vector<double> cartPrice;
 		std::vector<sf::Text> cartItems;
-
 
 	public:
 		Store();
@@ -140,7 +142,14 @@ class Store{
 			Grains getGrainsItem(int pos);
 	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//Snacks Function Declarations
+		   void addSnacks(std::string name, double price, sf::Vector2f dimensions,  sf::Font &font, std::string initText);
+		   void snacksGrid();
+		   int amountOfSnacksItems();
+		   int checkSnacksButtonPressed(sf::Vector2f mousePosF);
+		   Snacks getSnacksItem(int pos);
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Cashier Function Declaration
@@ -649,6 +658,55 @@ Grains Store::getGrainsItem(int pos)
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Snacks Functions
+void Store::addSnacks(std::string name, double price, sf::Vector2f dimensions, sf::Font &font, std::string initText)
+{
+    snacksItems.push_back(Snacks( name, price,  dimensions, font, initText));
+}
+
+void Store::snacksGrid()
+{
+    float x = 110.0f;
+    float y = 160.0f;
+    int cnt = 0;
+    for(int i = 0, max = snacksItems.size(); i!=max; ++i )
+    {
+        snacksItems.at(i).changeButtonPosition(x, y);
+        snacksItems.at(i).changeTextPosition(x+5, y+5);
+        x+=200.0f;
+        cnt++;
+
+        if(cnt == 5)
+        {
+            cnt = 0;
+            x = 110.0f;
+            y += 100.0f;
+        }
+    }
+}
+
+int Store::checkSnacksButtonPressed(sf::Vector2f mousePosF)
+{
+    for(int i = 0, max = snacksItems.size(); i!=max;++i)
+    {
+        if(snacksItems.at(i).clicked(mousePosF))
+            return i;
+    }
+    return 444;
+}
+
+int Store::amountOfSnacksItems()
+{
+    return snacksItems.size();
+}
+
+Snacks Store::getSnacksItem(int pos)
+{
+    return snacksItems.at(pos);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Cashier Functions
