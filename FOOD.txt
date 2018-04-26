@@ -1,3 +1,6 @@
+Produce Watermelon Fruit 3.50
+Produce Grapefruit Fruit 2.99
+Produce Blueberries Fruit 2.99
 Produce Lettuce Vegetable 0.25
 Produce Kiwi Fruit 1.20
 Produce Banana Fruit 0.10
@@ -58,7 +61,7 @@ Bakery Bagels 4.99
 Bakery White_Bread 2.99
 Pharmacy Tylenol_50_Capsules 9.99
 Pharmacy Advil_50_Capsules 11.99
-Pharmacy Ibuprofen_100_Capsules 12.50
+Pharmacy Ibuprofen_100_Caps 12.50
 Pharmacy Emergen-C_10_Packs 8.55
 Pharmacy Benadryl_50_Capsules 12.55
 Pharmacy Chlor-trim_50_Caps 12.99
@@ -155,7 +158,7 @@ Dairy Creamer Coffee-mate 3.98
 Dairy Milk_Powder Nido 15.99
 Dairy Skim_Milk Nestle 3.45
 Grains Brown_Rice Royal_Basmati 32.99
-Grains White_Rice White 41.34
+Grains White_Rice Uncle_Ben's_White 41.34
 Grains Cereal Honey_Bunches 6.48
 Grains Cereal Cheerios 4.76
 Grains Spaghetti Barilla 11.17

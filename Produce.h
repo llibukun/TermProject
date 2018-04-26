@@ -35,7 +35,6 @@ class Produce
 
 		bool clicked(sf::Vector2f mousePosF);
 
-
 		std::string getType();
 		std::string getName();
 		double getPricePerLlb();
